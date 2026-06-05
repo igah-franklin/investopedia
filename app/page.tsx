@@ -10,6 +10,7 @@ const u = (id: string, w = 1200) =>
 
 const PHOTO = {
   hero: u("1591115765373-5207764f72e7", 1920), // founders pitching in a co-working loft
+  heroPortrait: u("1531123897727-8f129e1688ce", 1100), // African founder portrait in Ankara print
   founder: u("1573164713988-8665fc963095", 1000), // African founder with tablet, data centre
   deal: u("1521791136064-7986c2920216", 900), // closing handshake
   mentor: u("1573497491208-6b1acb260507", 900), // one-on-one mentorship by a city window
@@ -153,20 +154,7 @@ export default function Home() {
       <SiteNav />
 
       {/* ════════════════ HERO ════════════════ */}
-      <section className="relative overflow-hidden bg-forest-950 pt-36 pb-28 text-cream sm:pt-44 sm:pb-36">
-        {/* photographic backdrop — founders pitching */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <Image
-            src={PHOTO.hero}
-            alt=""
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover object-center opacity-[0.22]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/85 via-forest-950/70 to-forest-950" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-transparent to-forest-950/60" />
-        </div>
+      <section className="relative overflow-hidden bg-forest-950 pt-32 pb-24 text-cream sm:pt-40 sm:pb-28">
         {/* animated aurora orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-32 top-10 h-[34rem] w-[34rem] rounded-full bg-emerald/25 blur-[120px] animate-aurora" />
@@ -180,70 +168,127 @@ export default function Home() {
         />
 
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-none border border-mint/25 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-mint backdrop-blur">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-bright opacity-75 animate-pulse-ring" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-bright" />
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+            {/* ── text column ── */}
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center gap-2 rounded-none border border-mint/25 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-mint backdrop-blur">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-bright opacity-75 animate-pulse-ring" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-bright" />
+                  </span>
+                  Ahead of the InvestoVilla Syndicate · launching Q4 2026
                 </span>
-                Ahead of the InvestoVilla Syndicate · launching Q4 2026
-              </span>
-            </Reveal>
+              </Reveal>
 
-            <Reveal delay={80}>
-              <h1 className="mt-7 font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-[4.6rem]">
-                Raise smarter.
-                <br />
-                <span className="text-gild">Close faster.</span> Build for Africa.
-              </h1>
-            </Reveal>
+              <Reveal delay={80}>
+                <h1 className="mt-7 font-display text-[2.7rem] font-semibold leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.5rem]">
+                  Raise smarter.
+                  <br />
+                  <span className="text-gild">Close faster.</span>
+                  <br className="hidden sm:block" /> Build for Africa.
+                </h1>
+              </Reveal>
 
-            <Reveal delay={160}>
-              <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-cream/75 sm:text-xl">
-                The <span className="font-medium text-cream">InvestoVilla Pipeline Development Program</span> is an
-                action-learning fundraising mentorship that guides African founders through the venture-finance maze —
-                from a fundable story to a closed round, using real market experience.
-              </p>
-            </Reveal>
+              <Reveal delay={160}>
+                <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream/75">
+                  The <span className="font-medium text-cream">InvestoVilla Pipeline Development Program</span> is an
+                  action-learning fundraising mentorship that guides African founders through the venture-finance maze —
+                  from a fundable story to a closed round, using real market experience.
+                </p>
+              </Reveal>
 
-            <Reveal delay={240}>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="#apply"
-                  className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
-                >
-                  Apply before June 30
-                  <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#structure"
-                  className="inline-flex items-center gap-2 rounded-none border border-cream/20 bg-white/5 px-7 py-3.5 text-[0.95rem] font-semibold text-cream backdrop-blur transition-all duration-300 hover:bg-white/10"
-                >
-                  See how it works
-                </a>
+              <Reveal delay={240}>
+                <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <a
+                    href="#apply"
+                    className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
+                  >
+                    Apply before June 30
+                    <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                  <a
+                    href="#structure"
+                    className="inline-flex items-center gap-2 rounded-none border border-cream/20 bg-white/5 px-7 py-3.5 text-[0.95rem] font-semibold text-cream backdrop-blur transition-all duration-300 hover:bg-white/10"
+                  >
+                    See how it works
+                  </a>
+                </div>
+              </Reveal>
+
+              <Reveal delay={320}>
+                <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-cream/55">
+                  <span className="inline-flex items-center gap-2">
+                    <Icon.Check className="h-4 w-4 text-emerald-bright" />
+                    Mentorship is <span className="font-semibold text-mint">100% free</span>
+                  </span>
+                  <span aria-hidden className="hidden h-1 w-1 rounded-full bg-cream/30 sm:block" />
+                  <span>only the optional design clinic carries a subsidized fee</span>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* ── image showcase column ── */}
+            <Reveal delay={140} className="lg:col-span-5">
+              <div className="relative mx-auto max-w-sm lg:max-w-none">
+                <div aria-hidden className="absolute -inset-4 -z-10 rounded-none bg-gradient-to-br from-emerald/25 via-transparent to-gold/20 blur-2xl" />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-none border border-mint/15 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.85)]">
+                  <Image
+                    src={PHOTO.heroPortrait}
+                    alt="An African founder — building venture-backable companies for the continent"
+                    fill
+                    preload
+                    sizes="(max-width: 1024px) 24rem, 34rem"
+                    className="object-cover object-center"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950/75 via-transparent to-forest-950/10" />
+                  <div aria-hidden className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+
+                  {/* caption */}
+                  <div className="absolute inset-x-5 bottom-5">
+                    <p className="font-display text-lg font-semibold leading-tight text-cream">
+                      Founders building the African market.
+                    </p>
+                    <p className="mt-1 text-xs text-cream/70">Pre-seed → Series A · $20k–$1M rounds</p>
+                  </div>
+                </div>
+
+                {/* floating gold chip */}
+                <span className="absolute -left-3 top-6 rounded-none bg-gold px-3.5 py-2 text-[0.7rem] font-bold uppercase tracking-wider text-forest-950 shadow-lg shadow-gold/30 sm:-left-5">
+                  0% equity taken
+                </span>
+
+                {/* floating glass stat card */}
+                <div className="glass-dark absolute -bottom-5 -right-3 flex items-center gap-4 rounded-none px-5 py-3.5 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)] sm:-right-6">
+                  <div>
+                    <div className="font-display text-2xl font-semibold leading-none text-gild">≥2</div>
+                    <div className="mt-1 text-[0.62rem] font-medium uppercase tracking-wider text-cream/60">
+                      Live funds you pitch
+                    </div>
+                  </div>
+                  <div className="h-8 w-px bg-mint/15" />
+                  <div>
+                    <div className="font-display text-2xl font-semibold leading-none text-mint">12 wks</div>
+                    <div className="mt-1 text-[0.62rem] font-medium uppercase tracking-wider text-cream/60">
+                      Free accelerator
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Reveal>
-
-            <Reveal delay={320}>
-              <p className="mt-5 text-sm text-cream/55">
-                Mentorship is <span className="font-semibold text-mint">100% free</span> · only the optional design
-                clinic carries a subsidized fee
-              </p>
             </Reveal>
           </div>
 
-          {/* qualifying checklist */}
-          <Reveal delay={120} className="mx-auto mt-16 max-w-4xl">
+          {/* qualifying checklist band */}
+          <Reveal delay={200} className="mt-20">
             <div className="glass-dark rounded-none p-6 sm:p-8">
               <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-mint/80">
                 This program is right for you if you can say “yes” to all of these
               </p>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   "Building a game-changing startup in Africa",
                   "Raising — or planning to raise — capital",
-                  "Your round is between $20k and $1M (equity or debt)",
+                  "Your round is $20k – $1M (equity or debt)",
                   "You want expert guidance through the raise",
                 ].map((q) => (
                   <div
