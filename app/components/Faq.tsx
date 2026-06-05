@@ -53,15 +53,15 @@ const FAQS: { q: string; a: string }[] = [
   },
 ];
 
-function Plus({ open }: { open: boolean }) {
+function Toggle({ open }: { open: boolean }) {
   return (
-    <span className="relative grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald/10 transition-colors duration-300 group-hover:bg-emerald/18">
-      <span className="absolute h-[2px] w-3.5 rounded-full bg-forest-700" />
-      <span
-        className={`absolute h-3.5 w-[2px] rounded-full bg-forest-700 transition-transform duration-300 ${
-          open ? "rotate-90 scale-0" : ""
-        }`}
-      />
+    <span
+      className={`relative mt-1.5 grid h-5 w-5 shrink-0 place-items-center text-emerald transition-transform duration-300 ${
+        open ? "rotate-45" : "group-hover:rotate-90"
+      }`}
+    >
+      <span className="absolute h-[1.5px] w-4 rounded-full bg-current" />
+      <span className="absolute h-4 w-[1.5px] rounded-full bg-current" />
     </span>
   );
 }
@@ -70,24 +70,31 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="mx-auto max-w-3xl divide-y divide-forest-900/10 overflow-hidden rounded-none border border-forest-900/10 bg-white/60 backdrop-blur">
+    <div className="border-t border-forest-900/12">
       {FAQS.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className="group">
+          <div key={i} className="border-b border-forest-900/12">
             <button
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center gap-4 px-5 py-5 text-left sm:px-7"
+              className="group flex w-full items-start gap-4 py-6 text-left sm:gap-6"
               aria-expanded={isOpen}
             >
-              <Plus open={isOpen} />
               <span
-                className={`flex-1 font-display text-[1.05rem] font-medium leading-snug transition-colors duration-300 sm:text-lg ${
-                  isOpen ? "text-forest-700" : "text-ink"
+                className={`mt-2 font-mono text-xs font-medium tabular-nums transition-colors duration-300 ${
+                  isOpen ? "text-emerald" : "text-emerald/55"
+                }`}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span
+                className={`flex-1 font-display text-xl font-medium leading-snug tracking-tight transition-colors duration-300 sm:text-[1.6rem] ${
+                  isOpen ? "text-forest-700" : "text-ink group-hover:text-forest-700"
                 }`}
               >
                 {item.q}
               </span>
+              <Toggle open={isOpen} />
             </button>
             <div
               className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -95,7 +102,7 @@ export default function Faq() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-6 pl-[4.25rem] pr-6 text-[0.97rem] leading-relaxed text-muted sm:px-7 sm:pl-[4.75rem]">
+                <p className="max-w-2xl pb-7 pl-[1.75rem] pr-8 text-[0.95rem] leading-relaxed text-muted sm:pl-[2.6rem]">
                   {item.a}
                 </p>
               </div>

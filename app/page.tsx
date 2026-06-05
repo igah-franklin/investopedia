@@ -725,9 +725,89 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════ TIMELINE ════════════════ */}
+      <section id="timeline" className="relative scroll-mt-24 bg-cream py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          {/* header */}
+          <Reveal className="max-w-3xl">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald">
+              § 05 — Timeline
+            </p>
+            <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[3.1rem]">
+              18 weeks, end to end.
+            </h2>
+            <p className="mt-5 max-w-xl text-[0.97rem] leading-relaxed text-muted">
+              Tentative dates — adjusted to cohort needs at the training lead&apos;s discretion.
+            </p>
+          </Reveal>
+
+          {/* rows */}
+          <div className="mt-14 border-t border-forest-900/12">
+            {[
+              {
+                when: "Jul 31, 2026",
+                title: "Cohort begins",
+                desc: "Design clinic opens for accepted founders.",
+              },
+              {
+                when: "Weeks 1–4",
+                title: "Business design clinic",
+                desc: "Sharpen the model. Submit first funding requests.",
+              },
+              {
+                when: "+ 2 weeks",
+                title: "Break",
+                desc: "Synthesis. Investor feedback. Prep for the accelerator.",
+              },
+              {
+                when: "Weeks 7–18",
+                title: "Fundraising accelerator",
+                desc: "12 weeks of live raising under expert guidance.",
+              },
+              {
+                when: "Dec 4, 2026",
+                title: "Cohort closes",
+                desc: "Capstone, mentor reviews, investor introductions.",
+              },
+            ].map((t, i) => (
+              <Reveal key={t.title} delay={i * 70}>
+                <div className="group relative grid grid-cols-1 gap-2 border-b border-forest-900/12 py-7 sm:grid-cols-12 sm:items-baseline sm:gap-6">
+                  {/* vertical rail (continuous across rows) */}
+                  <div
+                    aria-hidden
+                    className="absolute left-[6px] top-0 bottom-0 w-px bg-forest-900/12"
+                  />
+                  {/* date + node */}
+                  <div className="relative flex items-center gap-4 sm:col-span-3">
+                    <span
+                      aria-hidden
+                      className="relative z-10 h-3 w-3 shrink-0 rounded-full bg-emerald ring-4 ring-cream transition-transform duration-300 group-hover:scale-125"
+                    />
+                    <span className="font-mono text-xs font-medium uppercase tracking-wider text-muted">
+                      {t.when}
+                    </span>
+                  </div>
+                  {/* milestone */}
+                  <h3 className="font-display text-2xl font-medium leading-snug tracking-tight text-ink transition-colors duration-300 group-hover:text-forest-700 sm:col-span-4 sm:text-[1.6rem]">
+                    {t.title}
+                  </h3>
+                  {/* description */}
+                  <p className="text-[0.95rem] leading-relaxed text-muted sm:col-span-5">
+                    {t.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ════════════════ PRICING ════════════════ */}
       <section id="pricing" className="relative scroll-mt-24 overflow-hidden bg-cream-soft py-24 sm:py-32">
         <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
+        <div aria-hidden className="pointer-events-none absolute -left-40 top-32 h-[26rem] w-[26rem] rounded-full bg-emerald/8 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -right-40 bottom-24 h-[24rem] w-[24rem] rounded-full bg-gold/10 blur-[120px]" />
+
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <Reveal>
@@ -742,8 +822,35 @@ export default function Home() {
             </Reveal>
           </div>
 
+          {/* free-accelerator highlight band */}
+          <Reveal delay={60} className="mx-auto mt-12 max-w-5xl">
+            <div className="group relative overflow-hidden rounded-none border border-mint/15 bg-forest-900 px-7 py-7 text-cream shadow-[0_28px_80px_-44px_rgba(8,35,27,0.85)] sm:px-10">
+              <div aria-hidden className="absolute inset-0 bg-grid-light opacity-40" />
+              <div aria-hidden className="pointer-events-none absolute -left-16 -top-20 h-52 w-52 rounded-full bg-emerald/25 blur-3xl transition-transform duration-700 group-hover:scale-125" />
+              <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-5">
+                  <span className="grid h-16 w-16 shrink-0 place-items-center rounded-none bg-emerald/15 text-emerald-bright ring-1 ring-mint/20">
+                    <Icon.Rocket className="h-8 w-8" />
+                  </span>
+                  <div>
+                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-mint">
+                      The 12-week Fundraising Accelerator
+                    </p>
+                    <p className="mt-1.5 font-display text-2xl font-semibold leading-tight sm:text-[1.9rem]">
+                      Always 100% free — we never take equity.
+                    </p>
+                  </div>
+                </div>
+                <div className="shrink-0 border-mint/15 sm:border-l sm:pl-10 sm:text-right">
+                  <div className="font-display text-6xl font-semibold leading-none text-gild">$0</div>
+                  <p className="mt-2 text-xs text-cream/60">You only pay for the optional clinic</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
           {/* deadline banner */}
-          <Reveal delay={80} className="mx-auto mt-10 max-w-3xl">
+          <Reveal delay={120} className="mx-auto mt-6 max-w-5xl">
             <div className="flex flex-col items-center gap-3 rounded-none border border-gold/40 bg-gold-soft/30 px-6 py-4 text-center sm:flex-row sm:text-left">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold/20 text-forest-800">
                 <Icon.Clock className="h-5 w-5" />
@@ -756,83 +863,143 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid items-center gap-6 lg:grid-cols-3">
             {[
               {
                 tag: "Standard pilot",
                 single: "$297",
                 duo: "$350",
-                note: "Single founder / two co-founders",
-                desc: "Subsidized 40% off for the pilot cohort.",
+                was: "$495",
+                save: "40% pilot discount",
+                note: "single · / two co-founders",
+                features: [
+                  "2 or 4-week Business Design Clinic",
+                  "Pre-approved lean canvas",
+                  "Funding request to ≥2 active funds",
+                  "Free entry to the 12-week accelerator",
+                ],
                 featured: false,
               },
               {
                 tag: "Need-based",
                 single: "$108",
                 duo: "$162",
-                note: "Single founder / two co-founders",
-                desc: "For early applicants before June 30 — by need, first-come first-served, until 50% of seats fill.",
+                was: "$297",
+                save: "Up to 63% off",
+                note: "single · / two co-founders",
+                features: [
+                  "Everything in Standard pilot",
+                  "Reserved for early applicants",
+                  "Granted by need, first-come first-served",
+                  "Closes once 50% of seats fill",
+                ],
                 featured: true,
               },
               {
                 tag: "Already venture-backed",
                 single: "Free",
                 duo: "Clinic optional",
+                was: null as string | null,
+                save: "Clinic waived",
                 note: "Skip straight to consideration",
-                desc: "Previously priced-round founders may skip the clinic entirely.",
+                features: [
+                  "Skip the design clinic entirely",
+                  "Straight to accelerator consideration",
+                  "Validated by your prior priced round",
+                  "Focus on performance, not re-validation",
+                ],
                 featured: false,
               },
             ].map((p, i) => (
-              <Reveal key={p.tag} delay={i * 110}>
+              <Reveal key={p.tag} delay={i * 110} className={p.featured ? "lg:-my-4" : ""}>
                 <div
-                  className={`lift relative flex h-full flex-col overflow-hidden rounded-none p-8 ${
+                  className={`lift group relative flex h-full flex-col overflow-hidden rounded-none p-8 ${
                     p.featured
-                      ? "border-2 border-gold bg-forest-900 text-cream shadow-[0_30px_80px_-40px_rgba(199,154,58,0.7)]"
+                      ? "border-2 border-gold bg-forest-900 text-cream shadow-[0_34px_90px_-40px_rgba(199,154,58,0.65)] lg:py-11"
                       : "border border-forest-900/10 bg-white/75 text-ink shadow-[0_20px_60px_-40px_rgba(8,35,27,0.5)] backdrop-blur"
                   }`}
                 >
                   {p.featured && (
                     <>
-                      <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-gold/20 blur-3xl" />
+                      <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-gold/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
                       <span className="absolute right-5 top-5 rounded-none bg-gold px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-forest-950">
                         Best value
                       </span>
                     </>
                   )}
-                  <span
-                    className={`relative text-xs font-semibold uppercase tracking-[0.18em] ${
-                      p.featured ? "text-gold-bright" : "text-forest-700"
-                    }`}
-                  >
-                    {p.tag}
-                  </span>
-                  <div className="relative mt-5 flex items-end gap-2">
-                    <span className="font-display text-5xl font-semibold leading-none">{p.single}</span>
-                    {p.duo !== "Clinic optional" && (
-                      <span className={`pb-1 text-sm ${p.featured ? "text-cream/60" : "text-muted"}`}>
-                        / {p.duo} duo
-                      </span>
-                    )}
-                    {p.duo === "Clinic optional" && (
-                      <span className={`pb-1 text-sm ${p.featured ? "text-cream/60" : "text-muted"}`}>
-                        · {p.duo}
+
+                  <div className="relative flex items-center justify-between gap-2">
+                    <span
+                      className={`text-xs font-semibold uppercase tracking-[0.18em] ${
+                        p.featured ? "text-gold-bright" : "text-forest-700"
+                      }`}
+                    >
+                      {p.tag}
+                    </span>
+                    {!p.featured && (
+                      <span className="rounded-none bg-emerald/10 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-forest-700">
+                        {p.save}
                       </span>
                     )}
                   </div>
-                  <p className={`relative mt-1 text-xs ${p.featured ? "text-cream/55" : "text-muted"}`}>{p.note}</p>
-                  <p className={`relative mt-5 flex-1 text-sm leading-relaxed ${p.featured ? "text-cream/75" : "text-ink-soft"}`}>
-                    {p.desc}
+
+                  <div className="relative mt-6 flex items-end gap-2.5">
+                    {p.was && (
+                      <span
+                        className={`pb-1.5 font-display text-xl font-medium line-through ${
+                          p.featured ? "text-cream/35" : "text-muted/55"
+                        }`}
+                      >
+                        {p.was}
+                      </span>
+                    )}
+                    <span className="font-display text-6xl font-semibold leading-none tracking-tight">{p.single}</span>
+                  </div>
+                  <p className={`relative mt-2 text-xs ${p.featured ? "text-cream/55" : "text-muted"}`}>
+                    {p.duo === "Clinic optional" ? p.duo : `${p.duo} for two co-founders`}
                   </p>
+                  {p.featured && (
+                    <span className="relative mt-3 inline-flex w-fit items-center gap-1.5 rounded-none bg-gold/15 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-gold-bright">
+                      {p.save}
+                    </span>
+                  )}
+
+                  <div
+                    aria-hidden
+                    className={`relative mt-7 h-px w-full ${
+                      p.featured
+                        ? "bg-gradient-to-r from-gold/50 via-mint/15 to-transparent"
+                        : "bg-gradient-to-r from-emerald/40 via-forest-900/10 to-transparent"
+                    }`}
+                  />
+
+                  <ul className="relative mt-6 flex-1 space-y-3">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
+                        <span
+                          className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
+                            p.featured ? "bg-emerald/25 text-emerald-bright" : "bg-emerald/12 text-emerald"
+                          }`}
+                        >
+                          <Icon.Check className="h-3.5 w-3.5" />
+                        </span>
+                        <span className={`text-[0.92rem] leading-snug ${p.featured ? "text-cream/85" : "text-ink-soft"}`}>
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
                   <a
                     href="#apply"
-                    className={`btn-sheen relative mt-7 inline-flex items-center justify-center gap-2 rounded-none px-6 py-3 text-sm font-semibold transition-all duration-300 ${
+                    className={`btn-sheen relative mt-8 inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 text-sm font-semibold transition-all duration-300 ${
                       p.featured
                         ? "bg-gold text-forest-950 hover:bg-gold-bright"
                         : "bg-forest-800 text-cream hover:bg-forest-700"
                     }`}
                   >
                     Start application
-                    <Icon.Arrow className="h-4 w-4" />
+                    <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
               </Reveal>
@@ -840,11 +1007,14 @@ export default function Home() {
           </div>
 
           <Reveal delay={120}>
-            <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-muted">
-              <span className="font-semibold text-forest-700">Refunds:</span> $108 need-based rate is non-refundable.
-              The $297 rate is fully refundable up to 2 weeks before start, 50% up to 7 days before — no refund once the
-              clinic begins, including for no-shows. Acceptance is on a rolling basis.
-            </p>
+            <div className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-none border border-forest-900/10 bg-white/50 px-5 py-4 backdrop-blur">
+              <Icon.Doc className="mt-0.5 h-4 w-4 shrink-0 text-forest-700" />
+              <p className="text-xs leading-relaxed text-muted">
+                <span className="font-semibold text-forest-700">Refunds:</span> the $108 need-based rate is
+                non-refundable. The $297 rate is fully refundable up to 2 weeks before start, 50% up to 7 days before —
+                no refund once the clinic begins, including for no-shows. Acceptance is on a rolling basis.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -940,20 +1110,29 @@ export default function Home() {
       {/* ════════════════ FAQ ════════════════ */}
       <section id="faq" className="relative scroll-mt-24 bg-cream py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <Reveal>
-              <Eyebrow>Questions, answered</Eyebrow>
-              <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[2.9rem]">
-                Frequently asked <span className="text-emerald-gild">questions.</span>
-              </h2>
-              <p className="mt-5 text-lg text-muted">
-                Honest answers on timing, guarantees, fees and what happens after you&apos;re in.
-              </p>
-            </Reveal>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* sticky heading column */}
+            <div className="lg:col-span-4">
+              <div className="lg:sticky lg:top-28">
+                <Reveal>
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald">
+                    § #06 — Questions
+                  </p>
+                  <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[3.1rem]">
+                    Frequently asked.
+                  </h2>
+                  <p className="mt-5 max-w-xs text-[0.97rem] leading-relaxed text-muted">
+                    Still unsure? The application is short — answering it often clarifies things.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+
+            {/* scrolling list column */}
+            <div className="lg:col-span-8">
+              <Faq />
+            </div>
           </div>
-          <Reveal delay={80} className="mt-12">
-            <Faq />
-          </Reveal>
         </div>
       </section>
 
