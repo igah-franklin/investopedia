@@ -1,7 +1,23 @@
+import Image from "next/image";
 import SiteNav from "./components/SiteNav";
 import Reveal from "./components/Reveal";
 import Counter from "./components/Counter";
 import Faq from "./components/Faq";
+
+/* ── curated, on-theme photography (Unsplash, optimized via next/image) ── */
+const u = (id: string, w = 1200) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+const PHOTO = {
+  hero: u("1591115765373-5207764f72e7", 1920), // founders pitching in a co-working loft
+  founder: u("1573164713988-8665fc963095", 1000), // African founder with tablet, data centre
+  deal: u("1521791136064-7986c2920216", 900), // closing handshake
+  mentor: u("1573497491208-6b1acb260507", 900), // one-on-one mentorship by a city window
+  strategy: u("1454165804606-c3d57bc86b40", 900), // strategy session with notes
+  clinic: u("1542744173-8e7e53415bb0", 900), // boardroom working session
+  accelerator: u("1521737711867-e3b97375f902", 900), // team building together at a table
+  who: u("1559136555-9303baea8ebd", 1100), // startup studio / open workspace
+};
 
 /* ── tiny inline icon set (server-safe, no deps) ───────────────── */
 type IconProps = { className?: string };
@@ -138,6 +154,19 @@ export default function Home() {
 
       {/* ════════════════ HERO ════════════════ */}
       <section className="relative overflow-hidden bg-forest-950 pt-36 pb-28 text-cream sm:pt-44 sm:pb-36">
+        {/* photographic backdrop — founders pitching */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <Image
+            src={PHOTO.hero}
+            alt=""
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover object-center opacity-[0.22]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/85 via-forest-950/70 to-forest-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-transparent to-forest-950/60" />
+        </div>
         {/* animated aurora orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-32 top-10 h-[34rem] w-[34rem] rounded-full bg-emerald/25 blur-[120px] animate-aurora" />
@@ -264,20 +293,98 @@ export default function Home() {
       </section>
 
       {/* ════════════════ ABOUT ════════════════ */}
-      <section id="about" className="relative scroll-mt-24 bg-cream py-24 sm:py-32">
+      <section id="about" className="relative scroll-mt-24 overflow-hidden bg-cream py-24 sm:py-32">
         <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
+        <div aria-hidden className="pointer-events-none absolute -left-40 top-24 h-[26rem] w-[26rem] rounded-full bg-emerald/8 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -right-40 bottom-10 h-[24rem] w-[24rem] rounded-full bg-gold/10 blur-[120px]" />
+
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          {/* centered header */}
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <Eyebrow>About the program</Eyebrow>
+              <h2 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-[3rem]">
+                Africa&apos;s early-stage founders face a hidden tax on{" "}
+                <span className="text-emerald-gild">perceived risk.</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+                We close that gap with structure, guidance and real market experience — so the right ventures stop
+                getting priced out of the rooms where capital is decided.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* editorial feature: image mosaic + narrative */}
+          <div className="mt-16 grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* mosaic */}
+            <Reveal className="lg:col-span-7">
+              <div className="relative">
+                <div aria-hidden className="absolute -inset-4 -z-10 rounded-none bg-gradient-to-br from-emerald/12 via-transparent to-gold/14 blur-2xl" />
+                <div className="grid grid-cols-12 gap-4 sm:gap-5">
+                  {/* primary — tall */}
+                  <div className="group relative col-span-7 aspect-[3/4] overflow-hidden rounded-none border border-forest-900/10 shadow-[0_30px_70px_-42px_rgba(8,35,27,0.65)]">
+                    <Image
+                      src={PHOTO.founder}
+                      alt="An African founder reviewing data — building venture-backable companies on the continent"
+                      fill
+                      sizes="(max-width: 1024px) 60vw, 30rem"
+                      className="object-cover transition-transform duration-[1.1s] group-hover:scale-105"
+                    />
+                    <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950/65 via-transparent to-transparent" />
+                    <span className="absolute left-4 top-4 rounded-none bg-gold px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-forest-950">
+                      0% equity taken
+                    </span>
+                    <p className="absolute bottom-4 left-4 right-4 font-display text-lg font-semibold leading-tight text-cream">
+                      Real market experience, not just theory.
+                    </p>
+                  </div>
+
+                  {/* two stacked */}
+                  <div className="col-span-5 flex flex-col gap-4 sm:gap-5">
+                    <div className="group relative aspect-[4/5] flex-1 overflow-hidden rounded-none border border-forest-900/10 shadow-[0_24px_60px_-40px_rgba(8,35,27,0.6)]">
+                      <Image
+                        src={PHOTO.mentor}
+                        alt="A founder in a one-on-one mentorship session"
+                        fill
+                        sizes="(max-width: 1024px) 40vw, 18rem"
+                        className="object-cover transition-transform duration-[1.1s] group-hover:scale-105"
+                      />
+                      <div aria-hidden className="absolute inset-0 bg-forest-950/10 transition-colors duration-500 group-hover:bg-forest-950/0" />
+                    </div>
+                    <div className="group relative aspect-[4/5] flex-1 overflow-hidden rounded-none border border-forest-900/10 shadow-[0_24px_60px_-40px_rgba(8,35,27,0.6)]">
+                      <Image
+                        src={PHOTO.deal}
+                        alt="Two parties shaking hands as a funding round closes"
+                        fill
+                        sizes="(max-width: 1024px) 40vw, 18rem"
+                        className="object-cover transition-transform duration-[1.1s] group-hover:scale-105"
+                      />
+                      <div aria-hidden className="absolute inset-0 bg-forest-950/10 transition-colors duration-500 group-hover:bg-forest-950/0" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* floating glass stat card */}
+                <div className="glass absolute -bottom-7 right-2 hidden rounded-none px-6 py-4 shadow-[0_24px_60px_-30px_rgba(8,35,27,0.55)] sm:block">
+                  <div className="flex items-center gap-5">
+                    <div>
+                      <div className="font-display text-3xl font-semibold text-forest-700">≥2</div>
+                      <div className="text-[0.7rem] font-medium uppercase tracking-wider text-muted">Live funds you pitch</div>
+                    </div>
+                    <div className="h-10 w-px bg-forest-900/12" />
+                    <div>
+                      <div className="font-display text-3xl font-semibold text-forest-700">$20k–1M</div>
+                      <div className="text-[0.7rem] font-medium uppercase tracking-wider text-muted">Target round size</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* narrative */}
             <div className="lg:col-span-5">
-              <Reveal>
-                <Eyebrow>About the program</Eyebrow>
-                <h2 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-[2.9rem]">
-                  Africa&apos;s early-stage founders face a hidden tax on{" "}
-                  <span className="text-emerald-gild">perceived risk.</span>
-                </h2>
-              </Reveal>
               <Reveal delay={120}>
-                <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+                <p className="text-lg leading-relaxed text-ink-soft">
                   The venture-financing landscape is turning brutal for early-stage African startups — fewer small
                   cheques, relatively more mid-sized ones. That gap is driven by{" "}
                   <span className="font-medium text-forest-700">perceived rather than actual risk</span>, and it hits
@@ -285,7 +392,7 @@ export default function Home() {
                 </p>
               </Reveal>
               <Reveal delay={200}>
-                <div className="mt-8 rounded-none border-l-4 border-gold bg-gold-soft/30 p-5">
+                <div className="mt-8 rounded-none border-l-4 border-gold bg-gold-soft/30 p-6">
                   <p className="text-[0.97rem] leading-relaxed text-ink-soft">
                     <span className="font-semibold text-forest-800">Our answer:</span> a practical, action-learning
                     mentorship — built on real market experience — that walks beside you, step by step, until your round
@@ -293,44 +400,60 @@ export default function Home() {
                   </p>
                 </div>
               </Reveal>
+              <Reveal delay={280}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {["Action-learning", "Real funds", "Built for Africa"].map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center gap-2 rounded-none border border-forest-900/12 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-forest-700 backdrop-blur"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
             </div>
+          </div>
 
-            <div className="lg:col-span-7">
-              <div className="grid gap-5 sm:grid-cols-2">
-                {[
-                  {
-                    icon: Icon.Map,
-                    title: "Read the landscape",
-                    body: "Understand the African venture-finance ecosystem and where your venture truly fits within it.",
-                  },
-                  {
-                    icon: Icon.Compass,
-                    title: "Build your strategy",
-                    body: "Develop a funding and fundraising strategy tailored to your stage, sector and geography.",
-                  },
-                  {
-                    icon: Icon.Target,
-                    title: "Step-by-step guidance",
-                    body: "Navigate your raise with practical, hands-on support at every checkpoint of the journey.",
-                  },
-                  {
-                    icon: Icon.Coins,
-                    title: "Close the best deal",
-                    body: "Aim to close your round in record time — and on the strongest terms with your investors.",
-                  },
-                ].map((c, i) => (
-                  <Reveal key={c.title} delay={i * 110}>
-                    <div className="lift group h-full rounded-none border border-forest-900/10 bg-white/70 p-6 shadow-[0_18px_50px_-30px_rgba(8,35,27,0.4)] backdrop-blur hover:shadow-[0_28px_60px_-32px_rgba(8,35,27,0.5)]">
-                      <div className="grid h-12 w-12 place-items-center rounded-none bg-forest-800 text-mint transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-105">
-                        <c.icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-5 font-display text-xl font-semibold text-ink">{c.title}</h3>
-                      <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{c.body}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
+          {/* capability cards — full-width strip */}
+          <div className="mt-24 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Icon.Map,
+                title: "Read the landscape",
+                body: "Understand the African venture-finance ecosystem and where your venture truly fits within it.",
+              },
+              {
+                icon: Icon.Compass,
+                title: "Build your strategy",
+                body: "Develop a funding and fundraising strategy tailored to your stage, sector and geography.",
+              },
+              {
+                icon: Icon.Target,
+                title: "Step-by-step guidance",
+                body: "Navigate your raise with practical, hands-on support at every checkpoint of the journey.",
+              },
+              {
+                icon: Icon.Coins,
+                title: "Close the best deal",
+                body: "Aim to close your round in record time — and on the strongest terms with your investors.",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 90}>
+                <div className="lift group relative h-full overflow-hidden rounded-none border border-forest-900/10 bg-white/70 p-6 shadow-[0_18px_50px_-30px_rgba(8,35,27,0.4)] backdrop-blur hover:shadow-[0_28px_60px_-32px_rgba(8,35,27,0.5)]">
+                  <span className="absolute right-5 top-4 font-display text-3xl font-semibold text-forest-900/8">
+                    0{i + 1}
+                  </span>
+                  <div className="grid h-12 w-12 place-items-center rounded-none bg-forest-800 text-mint transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-105">
+                    <c.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-semibold text-ink">{c.title}</h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{c.body}</p>
+                  <div aria-hidden className="mt-5 h-px w-full bg-gradient-to-r from-emerald/40 via-forest-900/10 to-transparent" />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -353,7 +476,32 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
+          <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:items-stretch">
+            <Reveal className="lg:col-span-5">
+              <div className="group relative h-full min-h-[22rem] overflow-hidden rounded-none border border-mint/15 shadow-[0_30px_80px_-45px_rgba(0,0,0,0.8)]">
+                <Image
+                  src={PHOTO.who}
+                  alt="A modern startup studio where founders build for the African market"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40rem"
+                  className="object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/45 to-forest-950/10" />
+                <div aria-hidden className="absolute inset-0 bg-emerald/10 mix-blend-overlay" />
+                <div className="absolute inset-x-0 bottom-0 p-7">
+                  <span className="inline-flex items-center gap-2 rounded-none border border-mint/25 bg-white/5 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-mint backdrop-blur">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-bright" />
+                    Pre-seed → Series A
+                  </span>
+                  <p className="mt-4 font-display text-2xl font-semibold leading-snug text-cream">
+                    Wherever you sit today, you&apos;re building the{" "}
+                    <span className="text-gild">African market.</span>
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
             {[
               {
                 icon: Icon.Globe,
@@ -388,6 +536,7 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
+            </div>
           </div>
         </div>
       </section>
@@ -434,6 +583,16 @@ export default function Home() {
             <Reveal>
               <div className="lift group relative flex h-full flex-col overflow-hidden rounded-none border border-forest-900/10 bg-white/75 p-8 shadow-[0_24px_70px_-40px_rgba(8,35,27,0.55)] backdrop-blur sm:p-10">
                 <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gold/10 blur-2xl transition-all duration-700 group-hover:scale-150" />
+                <div className="relative -mx-8 -mt-8 mb-7 h-44 overflow-hidden sm:-mx-10 sm:-mt-10">
+                  <Image
+                    src={PHOTO.clinic}
+                    alt="Founders in a focused business-design working session"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 36rem"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
+                </div>
                 <div className="relative flex items-center justify-between">
                   <span className="inline-flex items-center gap-2 rounded-none bg-gold-soft/40 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-forest-800">
                     Phase 1
@@ -494,6 +653,17 @@ export default function Home() {
               <div className="lift group relative flex h-full flex-col overflow-hidden rounded-none border border-mint/15 bg-forest-900 p-8 text-cream shadow-[0_24px_70px_-36px_rgba(8,35,27,0.8)] sm:p-10">
                 <div aria-hidden className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-emerald/25 blur-3xl transition-all duration-700 group-hover:scale-150" />
                 <div aria-hidden className="absolute inset-0 bg-grid-light opacity-40" />
+                <div className="relative -mx-8 -mt-8 mb-7 h-44 overflow-hidden sm:-mx-10 sm:-mt-10">
+                  <Image
+                    src={PHOTO.accelerator}
+                    alt="A founding team building together — learning by doing"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 36rem"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-900 via-forest-900/45 to-transparent" />
+                  <div aria-hidden className="absolute inset-0 bg-emerald/10 mix-blend-overlay" />
+                </div>
                 <div className="relative flex items-center justify-between">
                   <span className="inline-flex items-center gap-2 rounded-none bg-emerald/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-bright">
                     Phase 2
