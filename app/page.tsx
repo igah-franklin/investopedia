@@ -1089,12 +1089,10 @@ export default function Home() {
               <Reveal delay={160}>
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href="https://pipeline.amstevehouse.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/apply"
                     className="btn-sheen group inline-flex items-center justify-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
                   >
-                    Apply at pipeline.amstevehouse.com
+                    Start your application
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -1196,9 +1194,7 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="https://pipeline.amstevehouse.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/apply"
                 className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-8 py-4 text-base font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
               >
                 Apply now

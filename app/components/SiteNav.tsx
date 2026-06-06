@@ -68,7 +68,13 @@ export default function SiteNav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#apply"
+            href="/login"
+            className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
+          >
+            Log in
+          </a>
+          <a
+            href="/apply"
             className="btn-sheen hidden rounded-none bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream shadow-lg shadow-forest-900/20 transition-all duration-300 hover:bg-forest-700 hover:shadow-forest-900/30 sm:inline-flex"
           >
             Apply now
@@ -119,11 +125,18 @@ export default function SiteNav() {
             </a>
           ))}
           <a
-            href="#apply"
+            href="/apply"
             onClick={() => setOpen(false)}
             className="mt-2 rounded-none bg-forest-800 px-4 py-3 text-center text-base font-semibold text-cream"
           >
             Apply now
+          </a>
+          <a
+            href="/login"
+            onClick={() => setOpen(false)}
+            className="rounded-none border border-forest-900/15 px-4 py-3 text-center text-base font-semibold text-ink"
+          >
+            Log in
           </a>
         </div>
       </div>
