@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "./lib/auth";
+import { ClientProviders } from "./components/ClientProviders";
 
 const display = Fraunces({
   variable: "--font-display",
@@ -57,7 +57,7 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-cream text-ink">
-        <AuthProvider>{children}</AuthProvider>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );

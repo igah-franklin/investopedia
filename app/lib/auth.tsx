@@ -6,10 +6,10 @@ import { auth as authApi, type User } from "./api";
 interface AuthState {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<User>;
+  login: (email: string, password: string, recaptchaToken: string) => Promise<User>;
   // Creates the account and triggers a verification email. Does NOT log in —
   // the user must verify before they can sign in. Returns the server message.
-  register: (name: string, email: string, password: string) => Promise<{ message: string; email: string }>;
+  register: (name: string, email: string, password: string, recaptchaToken: string) => Promise<{ message: string; email: string }>;
   verifyEmail: (token: string) => Promise<User>;
   resendVerification: (email: string) => Promise<string>;
   forgotPassword: (email: string) => Promise<string>;
@@ -33,14 +33,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .finally(() => setLoading(false));
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const { user } = await authApi.login({ email, password });
+  const login = async (email: string, password: string, recaptchaToken: string) => {
+    const { user } = await authApi.login({ email, password, recaptchaToken });
     setUser(user);
     return user;
   };
 
-  const register = async (name: string, email: string, password: string) => {
-    return authApi.register({ name, email, password });
+  const register = async (name: string, email: string, password: string, recaptchaToken: string) => {
+    return authApi.register({ name, email, password, recaptchaToken });
   };
 
   const verifyEmail = async (token: string) => {

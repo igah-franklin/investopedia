@@ -112,13 +112,13 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 export const auth = {
   // Registration no longer logs the user in — the account must be verified by
   // email first, so the response carries a message instead of a token.
-  register: (data: { name: string; email: string; password: string }) =>
+  register: (data: { name: string; email: string; password: string; recaptchaToken: string }) =>
     request<{ message: string; email: string }>("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     }),
   // Sets the auth cookie server-side; the user object comes back in the body.
-  login: (data: { email: string; password: string }) =>
+  login: (data: { email: string; password: string; recaptchaToken: string }) =>
     request<{ user: User }>("/api/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
@@ -153,7 +153,7 @@ export const applications = {
   create: (data: Record<string, unknown>) =>
     request<{ application: Application }>("/api/applications", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(data), // caller includes recaptchaToken in data
     }),
   mine: () => request<{ applications: Application[] }>("/api/applications/mine"),
   get: (id: string) => request<{ application: Application }>(`/api/applications/${id}`),

@@ -7,6 +7,7 @@ import { applications, ApiError, type FormConfig, type ApplicationType } from ".
 import AppShell from "../components/AppShell";
 import { Field, Input, TextArea, Select, Combobox, Button, Alert } from "../components/ui";
 import { COUNTRIES } from "../lib/countries";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const TYPE_LABELS: Record<ApplicationType, string> = {
   standard: "Standard pilot",
@@ -56,6 +57,7 @@ const initial: FormShape = {
 
 export default function ApplyPage() {
   const { user, loading } = useAuth();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [form, setForm] = useState<FormShape>(initial);
   const [config, setConfig] = useState<FormConfig | null>(null);
@@ -92,13 +94,22 @@ export default function ApplyPage() {
     setError("");
     setFieldErrors({});
     setSubmitting(true);
+
+    if (!executeRecaptcha) {
+      setError("reCAPTCHA not loaded yet. Please try again in a moment.");
+      setSubmitting(false);
+      return;
+    }
+
     try {
+      const recaptchaToken = await executeRecaptcha("submit_application");
       const payload = {
         ...form,
         raiseAmountUsd: Number(form.raiseAmountUsd),
         headquarteredInAfrica: form.headquarteredInAfrica === "true",
         incorporatedInAfrica: form.incorporatedInAfrica === "true",
         agreeToTerms: form.agreeToTerms === true,
+        recaptchaToken,
       };
       await applications.create(payload);
       router.push("/dashboard?submitted=1");

@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../lib/auth";
 import { ApiError } from "../lib/api";
 import { Field, Input, PasswordInput, Button, Alert } from "../components/ui";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function LoginPage() {
   const { login, resendVerification } = useAuth();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,8 +25,16 @@ export default function LoginPage() {
     setNeedsVerification(false);
     setResent(false);
     setLoading(true);
+
+    if (!executeRecaptcha) {
+      setError("reCAPTCHA not loaded yet. Please try again in a moment.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const user = await login(email, password);
+      const recaptchaToken = await executeRecaptcha("login");
+      const user = await login(email, password, recaptchaToken);
       router.push(user.role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
       if (err instanceof ApiError && err.status === 403) {

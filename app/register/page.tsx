@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useAuth } from "../lib/auth";
 import { ApiError } from "../lib/api";
 import { Field, Input, PasswordInput, Button, Alert } from "../components/ui";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function RegisterPage() {
   const { register, resendVerification } = useAuth();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,8 +22,16 @@ export default function RegisterPage() {
     e.preventDefault();
     setError("");
     setLoading(true);
+
+    if (!executeRecaptcha) {
+      setError("reCAPTCHA not loaded yet. Please try again in a moment.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const { email: registeredEmail } = await register(name, email, password);
+      const recaptchaToken = await executeRecaptcha("register");
+      const { email: registeredEmail } = await register(name, email, password, recaptchaToken);
       setSentTo(registeredEmail || email);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Something went wrong");

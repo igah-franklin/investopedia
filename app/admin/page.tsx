@@ -56,16 +56,8 @@ function ReviewRow({ app, onReviewed }: { app: Application; onReviewed: () => vo
         {app.oneLiner && <p className="sm:col-span-2"><span className="text-muted">One-liner:</span> {app.oneLiner}</p>}
         <p><span className="text-muted">Stage:</span> {app.stage}</p>
         <p><span className="text-muted">Founders:</span> {app.founders}{app.coFounderName ? ` (+${app.coFounderName})` : ""}</p>
-        <p><span className="text-muted">HQ in Africa:</span> {app.headquarteredInAfrica ? "Yes" : "No"}</p>
+        <p><span className="text-muted">hq in Africa:</span> {app.headquarteredInAfrica ? "Yes" : "No"}</p>
         <p><span className="text-muted">Incorporated:</span> {app.incorporatedInAfrica ? "Yes" : "No"}</p>
-        {app.pitchDeckUrl && (
-          <p className="sm:col-span-2">
-            <span className="text-muted">Deck:</span>{" "}
-            <a href={app.pitchDeckUrl} target="_blank" rel="noreferrer" className="font-medium text-forest-700 underline">
-              {app.pitchDeckUrl}
-            </a>
-          </p>
-        )}
         {app.review?.reason && (
           <p className="sm:col-span-2"><span className="text-muted">Decision note:</span> {app.review.reason}</p>
         )}
