@@ -233,7 +233,7 @@ export default function Home() {
                 <div aria-hidden className="absolute -inset-4 -z-10 rounded-none bg-gradient-to-br from-emerald/25 via-transparent to-gold/20 blur-2xl" />
                 <div className="relative aspect-[4/5] overflow-hidden rounded-none border border-mint/15 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.85)]">
                   <Image
-                    src="/african-startups.png"
+                    src="/casual-guy.jpg"
                     alt="African startup founders collaborating — building venture-backable companies for the continent"
                     fill
                     preload
