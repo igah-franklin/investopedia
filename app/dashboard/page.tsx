@@ -76,7 +76,10 @@ function ApplicationCard({ app }: { app: Application }) {
           <Badge status={app.payment.status} />
           {app.payment.amount ? (
             <span className="text-ink-soft">
-              {app.payment.currency} {app.payment.amount}
+              ₦{app.payment.amount.toLocaleString()}
+              {app.payment.amountUsd ? (
+                <span className="ml-1 text-muted">(${app.payment.amountUsd.toLocaleString()} USD)</span>
+              ) : null}
             </span>
           ) : null}
         </div>

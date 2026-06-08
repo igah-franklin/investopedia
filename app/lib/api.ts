@@ -39,21 +39,20 @@ export interface Application {
   headquarteredInAfrica: boolean;
   incorporatedInAfrica: boolean;
   country?: string;
-  oneLiner?: string;
-  problem?: string;
-  solution?: string;
-  traction?: string;
-  whyYou?: string;
-  pitchDeckUrl?: string;
+  oneLiner: string;
+  problem: string;
+  solution: string;
+  traction: string;
+  whyYou: string;
   businessPlanUrl?: string;
-  videoUrl?: string;
   needBasedReason?: string;
   status: ApplicationStatus;
   review?: { reason?: string; reviewedAt?: string };
   payment: {
     required: boolean;
     status: PaymentStatus;
-    amount?: number;
+    amount?: number;    // NGN major units charged
+    amountUsd?: number; // original USD price for display
     currency?: string;
     reference?: string;
     paidAt?: string;

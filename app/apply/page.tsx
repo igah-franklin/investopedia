@@ -49,9 +49,7 @@ const initial: FormShape = {
   solution: "",
   traction: "",
   whyYou: "",
-  pitchDeckUrl: "",
   businessPlanUrl: "",
-  videoUrl: "",
   needBasedReason: "",
   agreeToTerms: false,
 };
@@ -78,7 +76,7 @@ export default function ApplyPage() {
   }, [user, loading, router]);
 
   useEffect(() => {
-    applications.formConfig().then(setConfig).catch(() => {});
+    applications.formConfig().then(setConfig).catch(() => { });
   }, []);
 
   const price = useMemo(() => {
@@ -215,7 +213,8 @@ export default function ApplyPage() {
                   <>
                     Business Design Clinic fee:{" "}
                     <span className="font-display text-lg font-semibold text-forest-800">
-                      {price.currency} {price.amount}
+                      {/* {price.currency}  */}
+                      USD {price.amount}
                     </span>{" "}
                     — payable only after you&apos;re approved. The 12-week accelerator is free.
                   </>
@@ -291,32 +290,24 @@ export default function ApplyPage() {
           {/* Pitch */}
           <section className="space-y-5 rounded-none border border-forest-900/10 bg-white/60 p-6 sm:p-8">
             <h2 className="font-display text-xl font-semibold text-ink">Your pitch</h2>
-            <Field label="One-liner" hint="What you do, in a sentence" error={fieldErrors.oneLiner}>
-              <Input value={form.oneLiner as string} onChange={(e) => set("oneLiner", e.target.value)} placeholder="We help X do Y so they can Z." maxLength={280} />
+            <Field label="One-liner" hint="What you do, in a sentence" required error={fieldErrors.oneLiner}>
+              <Input value={form.oneLiner as string} onChange={(e) => set("oneLiner", e.target.value)} placeholder="We help X do Y so they can Z." maxLength={280} required />
             </Field>
-            <Field label="The problem" error={fieldErrors.problem}>
-              <TextArea value={form.problem as string} onChange={(e) => set("problem", e.target.value)} placeholder="What painful, urgent problem are you solving, and for whom?" />
+            <Field label="The problem" required error={fieldErrors.problem}>
+              <TextArea value={form.problem as string} onChange={(e) => set("problem", e.target.value)} placeholder="What painful, urgent problem are you solving, and for whom?" required />
             </Field>
-            <Field label="Your solution" error={fieldErrors.solution}>
-              <TextArea value={form.solution as string} onChange={(e) => set("solution", e.target.value)} placeholder="How does your product solve it? What makes your approach different?" />
+            <Field label="Your solution" required error={fieldErrors.solution}>
+              <TextArea value={form.solution as string} onChange={(e) => set("solution", e.target.value)} placeholder="How does your product solve it? What makes your approach different?" required />
             </Field>
-            <Field label="Traction so far" error={fieldErrors.traction}>
-              <TextArea value={form.traction as string} onChange={(e) => set("traction", e.target.value)} placeholder="Revenue, users, growth, pilots, LOIs — share the numbers that matter." />
+            <Field label="Traction so far" required error={fieldErrors.traction}>
+              <TextArea value={form.traction as string} onChange={(e) => set("traction", e.target.value)} placeholder="Revenue, users, growth, pilots, LOIs — share the numbers that matter." required />
             </Field>
-            <Field label="Why you?" error={fieldErrors.whyYou}>
-              <TextArea value={form.whyYou as string} onChange={(e) => set("whyYou", e.target.value)} placeholder="What makes you and your team uniquely able to win this market?" />
+            <Field label="Why you?" required error={fieldErrors.whyYou}>
+              <TextArea value={form.whyYou as string} onChange={(e) => set("whyYou", e.target.value)} placeholder="What makes you and your team uniquely able to win this market?" required />
             </Field>
-            <div className="grid gap-5 sm:grid-cols-3">
-              <Field label="Pitch deck URL" error={fieldErrors.pitchDeckUrl}>
-                <Input value={form.pitchDeckUrl as string} onChange={(e) => set("pitchDeckUrl", e.target.value)} placeholder="https://docs.google.com/…" />
-              </Field>
-              <Field label="Business plan URL" error={fieldErrors.businessPlanUrl}>
-                <Input value={form.businessPlanUrl as string} onChange={(e) => set("businessPlanUrl", e.target.value)} placeholder="https://docs.google.com/…" />
-              </Field>
-              <Field label="Video URL" error={fieldErrors.videoUrl}>
-                <Input value={form.videoUrl as string} onChange={(e) => set("videoUrl", e.target.value)} placeholder="https://youtu.be/…" />
-              </Field>
-            </div>
+            <Field label="Business plan URL" hint="Optional" error={fieldErrors.businessPlanUrl}>
+              <Input value={form.businessPlanUrl as string} onChange={(e) => set("businessPlanUrl", e.target.value)} placeholder="https://docs.google.com/…" />
+            </Field>
           </section>
 
           <label className="flex items-start gap-3">
