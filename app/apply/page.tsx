@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../lib/auth";
 import { applications, ApiError, type FormConfig, type ApplicationType } from "../lib/api";
 import AppShell from "../components/AppShell";
-import { Field, Input, TextArea, Select, Button, Alert } from "../components/ui";
+import { Field, Input, TextArea, Select, Combobox, Button, Alert } from "../components/ui";
+import { COUNTRIES } from "../lib/countries";
 
 const TYPE_LABELS: Record<ApplicationType, string> = {
   standard: "Standard pilot",
@@ -155,22 +156,27 @@ export default function ApplyPage() {
             <h2 className="font-display text-xl font-semibold text-ink">You &amp; your venture</h2>
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Founder name" required error={fieldErrors.founderName}>
-                <Input value={form.founderName as string} onChange={(e) => set("founderName", e.target.value)} required />
+                <Input value={form.founderName as string} onChange={(e) => set("founderName", e.target.value)} placeholder="Ada Founder" required />
               </Field>
               <Field label="Contact email" hint="Defaults to your account email" error={fieldErrors.email}>
-                <Input type="email" value={form.email as string} onChange={(e) => set("email", e.target.value)} />
+                <Input type="email" value={form.email as string} onChange={(e) => set("email", e.target.value)} placeholder="you@startup.com" />
               </Field>
               <Field label="Startup name" required error={fieldErrors.startupName}>
-                <Input value={form.startupName as string} onChange={(e) => set("startupName", e.target.value)} required />
+                <Input value={form.startupName as string} onChange={(e) => set("startupName", e.target.value)} placeholder="Acme Inc." required />
               </Field>
               <Field label="Website" error={fieldErrors.website}>
-                <Input value={form.website as string} onChange={(e) => set("website", e.target.value)} placeholder="https://" />
+                <Input value={form.website as string} onChange={(e) => set("website", e.target.value)} placeholder="https://yourstartup.com" />
               </Field>
               <Field label="Phone" error={fieldErrors.phone}>
-                <Input value={form.phone as string} onChange={(e) => set("phone", e.target.value)} />
+                <Input type="tel" value={form.phone as string} onChange={(e) => set("phone", e.target.value)} placeholder="+234 800 000 0000" />
               </Field>
               <Field label="Country" error={fieldErrors.country}>
-                <Input value={form.country as string} onChange={(e) => set("country", e.target.value)} placeholder="Nigeria" />
+                <Combobox
+                  value={form.country as string}
+                  onChange={(v) => set("country", v)}
+                  options={COUNTRIES}
+                  placeholder="Search for your country"
+                />
               </Field>
             </div>
           </section>
@@ -195,10 +201,10 @@ export default function ApplyPage() {
               {isDuo && (
                 <>
                   <Field label="Co-founder name" required error={fieldErrors.coFounderName}>
-                    <Input value={form.coFounderName as string} onChange={(e) => set("coFounderName", e.target.value)} />
+                    <Input value={form.coFounderName as string} onChange={(e) => set("coFounderName", e.target.value)} placeholder="Co-founder full name" />
                   </Field>
                   <Field label="Co-founder email" error={fieldErrors.coFounderEmail}>
-                    <Input type="email" value={form.coFounderEmail as string} onChange={(e) => set("coFounderEmail", e.target.value)} />
+                    <Input type="email" value={form.coFounderEmail as string} onChange={(e) => set("coFounderEmail", e.target.value)} placeholder="cofounder@startup.com" />
                   </Field>
                 </>
               )}
@@ -220,7 +226,7 @@ export default function ApplyPage() {
             )}
             {isNeedBased && (
               <Field label="Why do you need the reduced rate?" required error={fieldErrors.needBasedReason}>
-                <TextArea value={form.needBasedReason as string} onChange={(e) => set("needBasedReason", e.target.value)} />
+                <TextArea value={form.needBasedReason as string} onChange={(e) => set("needBasedReason", e.target.value)} placeholder="Briefly explain your circumstances and why the standard fee is a barrier." />
               </Field>
             )}
           </section>
@@ -286,29 +292,29 @@ export default function ApplyPage() {
           <section className="space-y-5 rounded-none border border-forest-900/10 bg-white/60 p-6 sm:p-8">
             <h2 className="font-display text-xl font-semibold text-ink">Your pitch</h2>
             <Field label="One-liner" hint="What you do, in a sentence" error={fieldErrors.oneLiner}>
-              <Input value={form.oneLiner as string} onChange={(e) => set("oneLiner", e.target.value)} maxLength={280} />
+              <Input value={form.oneLiner as string} onChange={(e) => set("oneLiner", e.target.value)} placeholder="We help X do Y so they can Z." maxLength={280} />
             </Field>
             <Field label="The problem" error={fieldErrors.problem}>
-              <TextArea value={form.problem as string} onChange={(e) => set("problem", e.target.value)} />
+              <TextArea value={form.problem as string} onChange={(e) => set("problem", e.target.value)} placeholder="What painful, urgent problem are you solving, and for whom?" />
             </Field>
             <Field label="Your solution" error={fieldErrors.solution}>
-              <TextArea value={form.solution as string} onChange={(e) => set("solution", e.target.value)} />
+              <TextArea value={form.solution as string} onChange={(e) => set("solution", e.target.value)} placeholder="How does your product solve it? What makes your approach different?" />
             </Field>
             <Field label="Traction so far" error={fieldErrors.traction}>
-              <TextArea value={form.traction as string} onChange={(e) => set("traction", e.target.value)} />
+              <TextArea value={form.traction as string} onChange={(e) => set("traction", e.target.value)} placeholder="Revenue, users, growth, pilots, LOIs — share the numbers that matter." />
             </Field>
             <Field label="Why you?" error={fieldErrors.whyYou}>
-              <TextArea value={form.whyYou as string} onChange={(e) => set("whyYou", e.target.value)} />
+              <TextArea value={form.whyYou as string} onChange={(e) => set("whyYou", e.target.value)} placeholder="What makes you and your team uniquely able to win this market?" />
             </Field>
             <div className="grid gap-5 sm:grid-cols-3">
               <Field label="Pitch deck URL" error={fieldErrors.pitchDeckUrl}>
-                <Input value={form.pitchDeckUrl as string} onChange={(e) => set("pitchDeckUrl", e.target.value)} placeholder="https://" />
+                <Input value={form.pitchDeckUrl as string} onChange={(e) => set("pitchDeckUrl", e.target.value)} placeholder="https://docs.google.com/…" />
               </Field>
               <Field label="Business plan URL" error={fieldErrors.businessPlanUrl}>
-                <Input value={form.businessPlanUrl as string} onChange={(e) => set("businessPlanUrl", e.target.value)} placeholder="https://" />
+                <Input value={form.businessPlanUrl as string} onChange={(e) => set("businessPlanUrl", e.target.value)} placeholder="https://docs.google.com/…" />
               </Field>
               <Field label="Video URL" error={fieldErrors.videoUrl}>
-                <Input value={form.videoUrl as string} onChange={(e) => set("videoUrl", e.target.value)} placeholder="https://" />
+                <Input value={form.videoUrl as string} onChange={(e) => set("videoUrl", e.target.value)} placeholder="https://youtu.be/…" />
               </Field>
             </div>
           </section>

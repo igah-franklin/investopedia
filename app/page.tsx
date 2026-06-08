@@ -10,7 +10,6 @@ const u = (id: string, w = 1200) =>
 
 const PHOTO = {
   hero: u("1591115765373-5207764f72e7", 1920), // founders pitching in a co-working loft
-  heroPortrait: u("1531123897727-8f129e1688ce", 1100), // African founder portrait in Ankara print
   founder: u("1573164713988-8665fc963095", 1000), // African founder with tablet, data centre
   deal: u("1521791136064-7986c2920216", 900), // closing handshake
   mentor: u("1573497491208-6b1acb260507", 900), // one-on-one mentorship by a city window
@@ -154,7 +153,7 @@ export default function Home() {
       <SiteNav />
 
       {/* ════════════════ HERO ════════════════ */}
-      <section className="relative overflow-hidden bg-forest-950 pt-32 pb-24 text-cream sm:pt-40 sm:pb-28">
+      <section className="relative overflow-hidden bg-gradient-to-r from-forest-950 via-forest-950 to-forest-800 pt-32 pb-24 text-cream sm:pt-40 sm:pb-28">
         {/* animated aurora orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-32 top-10 h-[34rem] w-[34rem] rounded-full bg-emerald/25 blur-[120px] animate-aurora" />
@@ -234,8 +233,8 @@ export default function Home() {
                 <div aria-hidden className="absolute -inset-4 -z-10 rounded-none bg-gradient-to-br from-emerald/25 via-transparent to-gold/20 blur-2xl" />
                 <div className="relative aspect-[4/5] overflow-hidden rounded-none border border-mint/15 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.85)]">
                   <Image
-                    src={PHOTO.heroPortrait}
-                    alt="An African founder — building venture-backable companies for the continent"
+                    src="/african-startups.png"
+                    alt="African startup founders collaborating — building venture-backable companies for the continent"
                     fill
                     preload
                     sizes="(max-width: 1024px) 24rem, 34rem"
@@ -547,40 +546,40 @@ export default function Home() {
             </Reveal>
 
             <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
-            {[
-              {
-                icon: Icon.Globe,
-                title: "Building for Africa",
-                body: "An African building for Africa, an African in the diaspora building for the African market, or a non-African building for an African market.",
-              },
-              {
-                icon: Icon.Building,
-                title: "Rooted on the continent",
-                body: "Your venture has — or plans to have — its headquarters in Africa.",
-              },
-              {
-                icon: Icon.Flag,
-                title: "Incorporated in Africa",
-                body: "Incorporated or planning to incorporate in Africa. Ventures incorporated abroad but legally registered in Africa are welcome.",
-              },
-              {
-                icon: Icon.Coins,
-                title: "Raising $20k – $1M",
-                body: "Raising equity or debt between $20k and $1M, from pre-seed to Series A. Bootstrapped ventures raising beyond Series A are welcome to apply.",
-              },
-            ].map((c, i) => (
-              <Reveal key={c.title} delay={i * 100}>
-                <div className="lift group flex h-full gap-5 rounded-none border border-mint/12 bg-white/[0.04] p-6 backdrop-blur transition-colors duration-500 hover:bg-white/[0.07] sm:p-7">
-                  <div className="grid h-14 w-14 shrink-0 place-items-center rounded-none bg-emerald/15 text-emerald-bright ring-1 ring-mint/15 transition-transform duration-500 group-hover:scale-110">
-                    <c.icon className="h-7 w-7" />
+              {[
+                {
+                  icon: Icon.Globe,
+                  title: "Building for Africa",
+                  body: "An African building for Africa, an African in the diaspora building for the African market, or a non-African building for an African market.",
+                },
+                {
+                  icon: Icon.Building,
+                  title: "Rooted on the continent",
+                  body: "Your venture has — or plans to have — its headquarters in Africa.",
+                },
+                {
+                  icon: Icon.Flag,
+                  title: "Incorporated in Africa",
+                  body: "Incorporated or planning to incorporate in Africa. Ventures incorporated abroad but legally registered in Africa are welcome.",
+                },
+                {
+                  icon: Icon.Coins,
+                  title: "Raising $20k – $1M",
+                  body: "Raising equity or debt between $20k and $1M, from pre-seed to Series A. Bootstrapped ventures raising beyond Series A are welcome to apply.",
+                },
+              ].map((c, i) => (
+                <Reveal key={c.title} delay={i * 100}>
+                  <div className="lift group flex h-full gap-5 rounded-none border border-mint/12 bg-white/[0.04] p-6 backdrop-blur transition-colors duration-500 hover:bg-white/[0.07] sm:p-7">
+                    <div className="grid h-14 w-14 shrink-0 place-items-center rounded-none bg-emerald/15 text-emerald-bright ring-1 ring-mint/15 transition-transform duration-500 group-hover:scale-110">
+                      <c.icon className="h-7 w-7" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-cream">{c.title}</h3>
+                      <p className="mt-2 text-[0.95rem] leading-relaxed text-cream/65">{c.body}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-cream">{c.title}</h3>
-                    <p className="mt-2 text-[0.95rem] leading-relaxed text-cream/65">{c.body}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
@@ -958,11 +957,10 @@ export default function Home() {
             ].map((p, i) => (
               <Reveal key={p.tag} delay={i * 110} className={p.featured ? "lg:-my-4" : ""}>
                 <div
-                  className={`lift group relative flex h-full flex-col overflow-hidden rounded-none p-8 ${
-                    p.featured
-                      ? "border-2 border-gold bg-forest-900 text-cream shadow-[0_34px_90px_-40px_rgba(199,154,58,0.65)] lg:py-11"
-                      : "border border-forest-900/10 bg-white/75 text-ink shadow-[0_20px_60px_-40px_rgba(8,35,27,0.5)] backdrop-blur"
-                  }`}
+                  className={`lift group relative flex h-full flex-col overflow-hidden rounded-none p-8 ${p.featured
+                    ? "border-2 border-gold bg-forest-900 text-cream shadow-[0_34px_90px_-40px_rgba(199,154,58,0.65)] lg:py-11"
+                    : "border border-forest-900/10 bg-white/75 text-ink shadow-[0_20px_60px_-40px_rgba(8,35,27,0.5)] backdrop-blur"
+                    }`}
                 >
                   {p.featured && (
                     <>
@@ -975,9 +973,8 @@ export default function Home() {
 
                   <div className="relative flex items-center justify-between gap-2">
                     <span
-                      className={`text-xs font-semibold uppercase tracking-[0.18em] ${
-                        p.featured ? "text-gold-bright" : "text-forest-700"
-                      }`}
+                      className={`text-xs font-semibold uppercase tracking-[0.18em] ${p.featured ? "text-gold-bright" : "text-forest-700"
+                        }`}
                     >
                       {p.tag}
                     </span>
@@ -991,9 +988,8 @@ export default function Home() {
                   <div className="relative mt-6 flex items-end gap-2.5">
                     {p.was && (
                       <span
-                        className={`pb-1.5 font-display text-xl font-medium line-through ${
-                          p.featured ? "text-cream/35" : "text-muted/55"
-                        }`}
+                        className={`pb-1.5 font-display text-xl font-medium line-through ${p.featured ? "text-cream/35" : "text-muted/55"
+                          }`}
                       >
                         {p.was}
                       </span>
@@ -1011,20 +1007,18 @@ export default function Home() {
 
                   <div
                     aria-hidden
-                    className={`relative mt-7 h-px w-full ${
-                      p.featured
-                        ? "bg-gradient-to-r from-gold/50 via-mint/15 to-transparent"
-                        : "bg-gradient-to-r from-emerald/40 via-forest-900/10 to-transparent"
-                    }`}
+                    className={`relative mt-7 h-px w-full ${p.featured
+                      ? "bg-gradient-to-r from-gold/50 via-mint/15 to-transparent"
+                      : "bg-gradient-to-r from-emerald/40 via-forest-900/10 to-transparent"
+                      }`}
                   />
 
                   <ul className="relative mt-6 flex-1 space-y-3">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <span
-                          className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-                            p.featured ? "bg-emerald/25 text-emerald-bright" : "bg-emerald/12 text-emerald"
-                          }`}
+                          className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${p.featured ? "bg-emerald/25 text-emerald-bright" : "bg-emerald/12 text-emerald"
+                            }`}
                         >
                           <Icon.Check className="h-3.5 w-3.5" />
                         </span>
@@ -1037,11 +1031,10 @@ export default function Home() {
 
                   <a
                     href="#apply"
-                    className={`btn-sheen relative mt-8 inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 text-sm font-semibold transition-all duration-300 ${
-                      p.featured
-                        ? "bg-gold text-forest-950 hover:bg-gold-bright"
-                        : "bg-forest-800 text-cream hover:bg-forest-700"
-                    }`}
+                    className={`btn-sheen relative mt-8 inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 text-sm font-semibold transition-all duration-300 ${p.featured
+                      ? "bg-gold text-forest-950 hover:bg-gold-bright"
+                      : "bg-forest-800 text-cream hover:bg-forest-700"
+                      }`}
                   >
                     Start application
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

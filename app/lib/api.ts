@@ -2,18 +2,10 @@
 // Talks to the Express server at NEXT_PUBLIC_API_URL.
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-const TOKEN_KEY = "iv_token";
 
-// ── token storage (browser only) ──────────────────────────────
-export function getToken(): string | null {
-  if (typeof window === "undefined") return null;
-  return window.localStorage.getItem(TOKEN_KEY);
-}
-export function setToken(token: string | null) {
-  if (typeof window === "undefined") return;
-  if (token) window.localStorage.setItem(TOKEN_KEY, token);
-  else window.localStorage.removeItem(TOKEN_KEY);
-}
+// Auth is carried by an httpOnly cookie set by the backend — the JWT is never
+// exposed to JavaScript (no localStorage), which mitigates XSS token theft.
+// Every request sends credentials so the browser attaches that cookie.
 
 // ── domain types ──────────────────────────────────────────────
 export type UserRole = "applicant" | "admin";
@@ -94,12 +86,11 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const token = getToken();
   const res = await fetch(`${API_URL}${path}`, {
     ...options,
+    credentials: "include", // send/receive the httpOnly auth cookie
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...(options.headers || {}),
     },
   });
@@ -120,15 +111,39 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
 // ── auth ──────────────────────────────────────────────────────
 export const auth = {
+  // Registration no longer logs the user in — the account must be verified by
+  // email first, so the response carries a message instead of a token.
   register: (data: { name: string; email: string; password: string }) =>
-    request<{ token: string; user: User }>("/api/auth/register", {
+    request<{ message: string; email: string }>("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     }),
+  // Sets the auth cookie server-side; the user object comes back in the body.
   login: (data: { email: string; password: string }) =>
-    request<{ token: string; user: User }>("/api/auth/login", {
+    request<{ user: User }>("/api/auth/login", {
       method: "POST",
       body: JSON.stringify(data),
+    }),
+  logout: () => request<{ status: string }>("/api/auth/logout", { method: "POST" }),
+  verifyEmail: (token: string) =>
+    request<{ user: User }>("/api/auth/verify-email", {
+      method: "POST",
+      body: JSON.stringify({ token }),
+    }),
+  resendVerification: (email: string) =>
+    request<{ message: string }>("/api/auth/resend-verification", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    }),
+  forgotPassword: (email: string) =>
+    request<{ message: string }>("/api/auth/forgot-password", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    }),
+  resetPassword: (token: string, password: string) =>
+    request<{ user: User }>("/api/auth/reset-password", {
+      method: "POST",
+      body: JSON.stringify({ token, password }),
     }),
   me: () => request<{ user: User }>("/api/auth/me"),
 };

@@ -5,27 +5,46 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../lib/auth";
 import { ApiError } from "../lib/api";
-import { Field, Input, Button, Alert } from "../components/ui";
+import { Field, Input, PasswordInput, Button, Alert } from "../components/ui";
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, resendVerification } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [needsVerification, setNeedsVerification] = useState(false);
+  const [resent, setResent] = useState(false);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError("");
+    setNeedsVerification(false);
+    setResent(false);
     setLoading(true);
     try {
       const user = await login(email, password);
       router.push(user.role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      if (err instanceof ApiError && err.status === 403) {
+        // Account exists but the email hasn't been verified yet.
+        setNeedsVerification(true);
+        setError(err.message);
+      } else {
+        setError(err instanceof ApiError ? err.message : "Something went wrong");
+      }
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function onResend() {
+    setResent(false);
+    try {
+      await resendVerification(email);
+    } finally {
+      setResent(true);
     }
   }
 
@@ -45,6 +64,21 @@ export default function LoginPage() {
 
           <form onSubmit={onSubmit} className="mt-7 space-y-4">
             {error && <Alert kind="error">{error}</Alert>}
+            {needsVerification && (
+              <div className="space-y-2">
+                {resent ? (
+                  <Alert kind="info">If that account isn&apos;t verified yet, a new link is on its way.</Alert>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={onResend}
+                    className="text-sm font-semibold text-forest-700 underline-offset-2 hover:text-emerald hover:underline"
+                  >
+                    Resend verification email
+                  </button>
+                )}
+              </div>
+            )}
             <Field label="Email" required>
               <Input
                 type="email"
@@ -56,15 +90,19 @@ export default function LoginPage() {
               />
             </Field>
             <Field label="Password" required>
-              <Input
-                type="password"
+              <PasswordInput
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Your password"
                 required
                 autoComplete="current-password"
               />
             </Field>
+            <div className="flex justify-end">
+              <Link href="/forgot-password" className="text-sm font-semibold text-forest-700 hover:text-emerald">
+                Forgot password?
+              </Link>
+            </div>
             <Button type="submit" loading={loading} className="w-full">
               Log in
             </Button>
