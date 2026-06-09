@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { auth as authApi, type User } from "./api";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { auth as authApi, setAccessToken, type User } from "./api";
 
 interface AuthState {
   user: User | null;
@@ -20,23 +21,47 @@ interface AuthState {
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session, status } = useSession();
 
-  // On first load, ask the server who we are. The auth cookie (if any) rides
-  // along automatically; a 401 simply means we're logged out.
+  const loading = status === "loading";
+
+  // Map the NextAuth session to the User interface
+  const user: User | null = session?.user && (session as any).accessToken
+    ? {
+        _id: (session.user as any).id || "",
+        name: session.user.name || "",
+        email: session.user.email || "",
+        role: (session.user as any).role || "applicant",
+      }
+    : null;
+
+  // Synchronize the access token with the API helper on load/change
   useEffect(() => {
-    authApi
-      .me()
-      .then((r) => setUser(r.user))
-      .catch(() => setUser(null))
-      .finally(() => setLoading(false));
-  }, []);
+    const token = (session as any)?.accessToken || null;
+    setAccessToken(token);
+  }, [session]);
 
   const login = async (email: string, password: string, recaptchaToken: string) => {
-    const { user } = await authApi.login({ email, password, recaptchaToken });
-    setUser(user);
-    return user;
+    // 1. Authenticate with backend directly to catch specific errors (like 403, 401)
+    const { user: backendUser, token: backendToken } = (await authApi.login({
+      email,
+      password,
+      recaptchaToken,
+    })) as any;
+
+    // 2. Establish NextAuth session using backend credentials
+    const res = await signIn("credentials", {
+      type: "login-success",
+      user: JSON.stringify(backendUser),
+      token: backendToken,
+      redirect: false,
+    });
+
+    if (res?.error) {
+      throw new Error(res.error);
+    }
+
+    return backendUser as User;
   };
 
   const register = async (name: string, email: string, password: string, recaptchaToken: string) => {
@@ -44,9 +69,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const verifyEmail = async (token: string) => {
-    const { user } = await authApi.verifyEmail(token);
-    setUser(user);
-    return user;
+    // 1. Authenticate with backend directly to verify email and get user + token
+    const { user: backendUser, token: backendToken } = (await authApi.verifyEmail(token)) as any;
+
+    // 2. Establish NextAuth session
+    const res = await signIn("credentials", {
+      type: "login-success",
+      user: JSON.stringify(backendUser),
+      token: backendToken,
+      redirect: false,
+    });
+
+    if (res?.error) {
+      throw new Error(res.error);
+    }
+
+    return backendUser as User;
   };
 
   const resendVerification = async (email: string) => {
@@ -60,16 +98,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const resetPassword = async (token: string, password: string) => {
-    const { user } = await authApi.resetPassword(token, password);
-    setUser(user);
-    return user;
+    // 1. Reset password on backend and get user + token
+    const { user: backendUser, token: backendToken } = (await authApi.resetPassword(token, password)) as any;
+
+    // 2. Establish NextAuth session
+    const res = await signIn("credentials", {
+      type: "login-success",
+      user: JSON.stringify(backendUser),
+      token: backendToken,
+      redirect: false,
+    });
+
+    if (res?.error) {
+      throw new Error(res.error);
+    }
+
+    return backendUser as User;
   };
 
   const logout = async () => {
     try {
-      await authApi.logout();
+      await signOut({ redirect: false });
+      await authApi.logout().catch(() => {});
     } finally {
-      setUser(null);
+      setAccessToken(null);
     }
   };
 
