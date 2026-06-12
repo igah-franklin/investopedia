@@ -1,4 +1,4 @@
-// Typed client for the InvestoVilla backend API.
+// Typed client for the Pipeline backend API.
 // Talks to the Express server at NEXT_PUBLIC_API_URL.
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
