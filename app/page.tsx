@@ -192,7 +192,7 @@ export default function Home() {
               <Reveal delay={160}>
                 <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream/75">
                   The <span className="font-medium text-cream">The investovilla entrepreneurship Program</span> is a hands-on mentorship
-                  that helps African founders successfully raise capital. We guide you step-by-step from building a strong pitch
+                  program that helps African founders successfully raise capital. We guide you step-by-step from building a strong pitch
                   to closing your funding round using real-world experience rather than just theory.
                 </p>
               </Reveal>
