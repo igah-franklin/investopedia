@@ -17,8 +17,8 @@ const sans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pipeline.amstevehouse.com"),
   title: {
-    default: "InvestoVilla Pipeline Development Program",
-    template: "%s · InvestoVilla Pipeline",
+    default: "Pipeline Development Program",
+    template: "%s · Pipeline",
   },
   description:
     "An action-learning fundraising mentorship program helping African startups raising $20k–$1M navigate venture finance, build a fundraising strategy, and close their round in record time.",
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     "pre-seed",
     "seed",
     "startup accelerator",
-    "InvestoVilla",
+    "Pipeline",
     "AmSteveHouse",
   ],
   openGraph: {
-    title: "InvestoVilla Pipeline Development Program",
+    title: "Pipeline Development Program",
     description:
       "Structured, practical guidance to help African founders raise $20k–$1M and close their round in record time.",
     url: "https://pipeline.amstevehouse.com",
-    siteName: "InvestoVilla Pipeline",
+    siteName: "Pipeline",
     type: "website",
   },
 };

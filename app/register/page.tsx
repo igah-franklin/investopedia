@@ -57,7 +57,7 @@ export default function RegisterPage() {
           <span className="grid h-10 w-10 place-items-center rounded-none bg-forest-800 ring-1 ring-emerald/30">
             <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
           </span>
-          <span className="font-display text-xl font-semibold tracking-tight text-ink">InvestoVilla</span>
+          <span className="font-display text-xl font-semibold tracking-tight text-ink">Pipeline</span>
         </Link>
 
         <div className="rounded-none border border-forest-900/10 bg-white/70 p-8 shadow-[0_24px_70px_-44px_rgba(8,35,27,0.5)] backdrop-blur">

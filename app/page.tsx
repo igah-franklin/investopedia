@@ -182,18 +182,18 @@ export default function Home() {
 
               <Reveal delay={80}>
                 <h1 className="mt-7 font-display text-[2.7rem] font-semibold leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.5rem]">
-                  Raise smarter.
+                  <span className="text-gild">Raise capital </span>
+                  <br className="hidden sm:block" /> in Africa.
                   <br />
-                  <span className="text-gild">Close faster.</span>
-                  <br className="hidden sm:block" /> Build for Africa.
+                  On your terms.
                 </h1>
               </Reveal>
 
               <Reveal delay={160}>
                 <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream/75">
-                  The <span className="font-medium text-cream">InvestoVilla Pipeline Development Program</span> is an
-                  action-learning fundraising mentorship that guides African founders through the venture-finance maze —
-                  from a fundable story to a closed round, using real market experience.
+                  The <span className="font-medium text-cream">The investovilla entrepreneurship Program</span> is a hands-on mentorship
+                  that helps African founders successfully raise capital. We guide you step-by-step from building a strong pitch
+                  to closing your funding round using real-world experience rather than just theory.
                 </p>
               </Reveal>
 
@@ -846,6 +846,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════ LEADERSHIP ════════════════ */}
+      <section id="leadership" className="relative scroll-mt-24 bg-forest-950 py-24 text-cream sm:py-32">
+        <div aria-hidden className="absolute inset-0 bg-grid-light opacity-30" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <Eyebrow>Meet the Program Lead</Eyebrow>
+              <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-cream sm:text-[2.9rem]">
+                Dr. Ugwumsinachi Okorie
+              </h2>
+              <p className="mt-5 text-lg text-cream/70">
+                Venture builder, investor-readiness advisor, and Managing Partner at AM-Steve House.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 max-w-5xl mx-auto grid lg:grid-cols-12 gap-10 items-start">
+            <Reveal delay={60} className="lg:col-span-5">
+              <div className="relative aspect-[3/4] max-w-sm mx-auto overflow-hidden rounded-none border border-gold/20 shadow-[0_30px_70px_-30px_rgba(199,154,58,0.25)]">
+                <Image
+                  src="/j-okorie.png"
+                  alt="Dr. Ugwumsinachi Okorie, Program Lead"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 30rem"
+                  className="object-cover"
+                />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent" />
+                <div aria-hidden className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+              </div>
+            </Reveal>
+
+            <div className="space-y-6 text-cream/80 text-lg leading-relaxed lg:col-span-7">
+              <Reveal delay={80}>
+                <p>
+                  Over the past 18 years, Dr. Okorie has worked across entrepreneurship, venture development, finance, technology, education, agriculture, and sustainability, supporting founders, enterprises, and ecosystem initiatives across Africa and internationally.
+                </p>
+              </Reveal>
+              <Reveal delay={120}>
+                <p>
+                  At AM-Steve House, he leads several flagship initiatives including the AM-Steve House Sustainability Program in Agriculture and Renewable Energy, the Women in Digital Business Program implemented in partnership with the ITCILO, and the group's One Venture Fund initiative. He also developed the Twin Venture Model, a framework designed to improve innovation distribution and venture accessibility for underserved markets in Africa.
+                </p>
+              </Reveal>
+              <Reveal delay={160}>
+                <p>
+                  Beyond AM-Steve House, Dr. Okorie has held venture-building and capital market leadership roles, including serving as Entrepreneur-in-Residence at Seedstars and Director of Origination, Global Capital Markets at East Century Capital, Hong Kong. He has also served as a judge, reviewer, mentor, or advisor for some of the world's leading entrepreneurship initiatives including MIT Solve, Africa's Business Heroes, and the Royal Academy of Engineering.
+                </p>
+              </Reveal>
+              <Reveal delay={200}>
+                <div className="mt-8 rounded-none border-l-4 border-gold bg-gold-soft/10 p-6">
+                  <p className="text-[0.97rem] leading-relaxed text-cream/90">
+                    <span className="font-semibold text-gold-bright">His focus is simple:</span> helping founders build ventures that are genuinely investable, engage investors more effectively, and raise capital with greater clarity, confidence, and strategic intent.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ════════════════ PRICING ════════════════ */}
       <section id="pricing" className="relative scroll-mt-24 overflow-hidden bg-cream-soft py-24 sm:py-32">
         <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
@@ -911,9 +970,9 @@ export default function Home() {
             {[
               {
                 tag: "Standard pilot",
-                single: "$297",
+                single: "$299",
                 duo: "$350",
-                was: "$495",
+                was: "$499",
                 save: "40% pilot discount",
                 note: "single · / two co-founders",
                 features: [
@@ -926,10 +985,10 @@ export default function Home() {
               },
               {
                 tag: "Need-based",
-                single: "$108",
+                single: "$119",
                 duo: "$162",
-                was: "$297",
-                save: "Up to 63% off",
+                was: "$299",
+                save: "Up to 60% off",
                 note: "single · / two co-founders",
                 features: [
                   "Everything in Standard pilot",
@@ -1048,8 +1107,8 @@ export default function Home() {
             <div className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-none border border-forest-900/10 bg-white/50 px-5 py-4 backdrop-blur">
               <Icon.Doc className="mt-0.5 h-4 w-4 shrink-0 text-forest-700" />
               <p className="text-xs leading-relaxed text-muted">
-                <span className="font-semibold text-forest-700">Refunds:</span> the $108 need-based rate is
-                non-refundable. The $297 rate is fully refundable up to 2 weeks before start, 50% up to 7 days before —
+                <span className="font-semibold text-forest-700">Refunds:</span> the $119 need-based rate is
+                non-refundable. The $299 rate is fully refundable up to 2 weeks before start, 50% up to 7 days before —
                 no refund once the clinic begins, including for no-shows. Acceptance is on a rolling basis.
               </p>
             </div>
@@ -1182,7 +1241,7 @@ export default function Home() {
               Your round deserves a <span className="text-gild">real strategy.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-cream/70">
-              Join the pilot cohort of the InvestoVilla Pipeline Development Program and raise with structure, guidance
+              Join the pilot cohort of the Pipeline Development Program and raise with structure, guidance
               and real market experience behind you.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -1213,7 +1272,7 @@ export default function Home() {
                 <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
               </span>
               <div className="flex flex-col leading-none">
-                <span className="font-display text-[1.05rem] font-semibold text-cream">InvestoVilla</span>
+                <span className="font-display text-[1.05rem] font-semibold text-cream">investovilla</span>
                 <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-emerald">
                   Pipeline Program
                 </span>
@@ -1232,7 +1291,7 @@ export default function Home() {
             </nav>
           </div>
           <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs sm:flex-row">
-            <p>© 2026 InvestoVilla Pipeline Development Program. An AmSteveHouse initiative.</p>
+            <p>© 2026 Pipeline Development Program. An AmSteveHouse initiative.</p>
             <a href="https://pipeline.amstevehouse.com" className="font-medium text-mint transition-colors hover:text-emerald-bright">
               pipeline.amstevehouse.com
             </a>

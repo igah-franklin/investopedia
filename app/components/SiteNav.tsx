@@ -45,14 +45,14 @@ export default function SiteNav() {
         }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="InvestoVilla home">
+        <a href="#top" className="group flex items-center gap-2.5" aria-label="Pipeline home">
           <span className="relative grid h-9 w-9 place-items-center rounded-none bg-forest-800 ring-1 ring-emerald/30">
             <span className="absolute inset-0 rounded-none bg-emerald/0 transition-all duration-500 group-hover:bg-emerald/15" />
             <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
           </span>
           <span className="flex flex-col leading-none">
             <span className="font-display text-[1.05rem] font-semibold tracking-tight text-ink">
-              InvestoVilla
+              investovilla
             </span>
             <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-emerald">
               Pipeline Program
@@ -131,7 +131,7 @@ export default function SiteNav() {
               <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
             </span>
             <span className="font-display text-[1.05rem] font-semibold tracking-tight text-ink">
-              InvestoVilla
+              Pipeline
             </span>
           </span>
           <button
