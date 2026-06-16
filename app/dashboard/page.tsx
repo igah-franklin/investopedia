@@ -52,7 +52,7 @@ function ApplicationCard({ app }: { app: Application }) {
         <div>
           <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">{app.startupName}</h3>
           <p className="mt-1 text-sm text-muted">
-            {app.applicationType.replace("-", " ")} · {app.raiseType} · ${app.raiseAmountUsd.toLocaleString()} ·{" "}
+            {app.applicationType.replace("-", " ")} · {Array.isArray(app.raiseType) ? app.raiseType.join(", ") : app.raiseType} · {typeof app.raiseAmountUsd === "number" ? `$${app.raiseAmountUsd.toLocaleString()}` : app.raiseAmountUsd} ·{" "}
             applied {new Date(app.createdAt).toLocaleDateString()}
           </p>
         </div>

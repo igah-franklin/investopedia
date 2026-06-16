@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import SiteNav from "./components/SiteNav";
 import Reveal from "./components/Reveal";
@@ -117,6 +120,11 @@ const Icon = {
       <path d="M12 7v5l3.5 2" />
     </svg>
   ),
+  Close: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  ),
 };
 
 /* ── reusable bits ─────────────────────────────────────────────── */
@@ -136,7 +144,7 @@ const MARQUEE = [
   "Built for Africa",
   "Action-learning",
   "Real market experience",
-  "Close in record time",
+  "Raise faster",
 ];
 
 const STATS = [
@@ -148,6 +156,8 @@ const STATS = [
 
 /* ── page ──────────────────────────────────────────────────────── */
 export default function Home() {
+  const [showBrochure, setShowBrochure] = useState(false);
+
   return (
     <div id="top" className="relative">
       <SiteNav />
@@ -191,7 +201,7 @@ export default function Home() {
 
               <Reveal delay={160}>
                 <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream/75">
-                  The <span className="font-medium text-cream">The investovilla entrepreneurship Program</span> is a hands-on mentorship
+                  The <span className="font-medium text-cream">InvestoVilla Pipeline Development Program for Entrepreneurs (IPDPE)</span> is a hands-on accelerator
                   program that helps African founders successfully raise capital. We guide you step-by-step from building a strong pitch
                   to closing your funding round using real-world experience rather than just theory.
                 </p>
@@ -203,15 +213,15 @@ export default function Home() {
                     href="#apply"
                     className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
                   >
-                    Apply before June 30
+                    Apply before June 30 (Introductory Deadline)
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
-                  <a
-                    href="#structure"
-                    className="inline-flex items-center gap-2 rounded-none border border-cream/20 bg-white/5 px-7 py-3.5 text-[0.95rem] font-semibold text-cream backdrop-blur transition-all duration-300 hover:bg-white/10"
+                  <button
+                    onClick={() => setShowBrochure(true)}
+                    className="inline-flex items-center gap-2 rounded-none border border-cream/20 bg-white/5 px-7 py-3.5 text-[0.95rem] font-semibold text-cream backdrop-blur transition-all duration-300 hover:bg-white/10 cursor-pointer"
                   >
-                    See how it works
-                  </a>
+                    View Program Brochure
+                  </button>
                 </div>
               </Reveal>
 
@@ -219,10 +229,10 @@ export default function Home() {
                 <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-cream/55">
                   <span className="inline-flex items-center gap-2">
                     <Icon.Check className="h-4 w-4 text-emerald-bright" />
-                    Mentorship is <span className="font-semibold text-mint">100% free</span>
+                    The Accelerator is <span className="font-semibold text-mint">100% free</span>
                   </span>
                   <span aria-hidden className="hidden h-1 w-1 rounded-full bg-cream/30 sm:block" />
-                  <span>only the optional design clinic carries a subsidized fee</span>
+                  <span>only the optional Venture Backability Clinic carries a subsidized fee</span>
                 </div>
               </Reveal>
             </div>
@@ -439,7 +449,7 @@ export default function Home() {
                 <div className="mt-8 rounded-none border-l-4 border-gold bg-gold-soft/30 p-6">
                   <p className="text-[0.97rem] leading-relaxed text-ink-soft">
                     <span className="font-semibold text-forest-800">Our answer:</span> a practical, action-learning
-                    mentorship — built on real market experience — that walks beside you, step by step, until your round
+                    accelerator — built on real market experience — that walks beside you, step by step, until your round
                     closes on the best possible terms.
                   </p>
                 </div>
@@ -593,11 +603,10 @@ export default function Home() {
               <Eyebrow>Program structure</Eyebrow>
               <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[2.9rem]">
                 Two phases, one outcome:{" "}
-                <span className="text-emerald-gild">a closed round.</span>
+                <span className="text-emerald-gild">raise faster.</span>
               </h2>
               <p className="mt-5 text-lg text-muted">
-                A diagnostic clinic to sharpen your story, then a 12-week accelerator to run the raise — by doing, not
-                just theorizing.
+                A diagnostic clinic to reposition your venture and sharpen your story, then a 12-week accelerator to run the raise – by doing, not just theorizing.
               </p>
             </Reveal>
           </div>
@@ -606,9 +615,9 @@ export default function Home() {
           <Reveal delay={80} className="mx-auto mt-12 max-w-3xl">
             <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
               {[
-                { k: "Clinic", v: "2–4 weeks" },
+                { k: "Venture Backability Clinic", v: "2–4 weeks" },
                 { k: "Break", v: "2 weeks" },
-                { k: "Accelerator", v: "6–12 weeks" },
+                { k: "Accelerator", v: "12 weeks" },
               ].map((t, i, arr) => (
                 <div key={t.k} className="flex items-center gap-3">
                   <span className="rounded-none border border-forest-900/12 bg-white/70 px-4 py-2 text-forest-700">
@@ -646,7 +655,7 @@ export default function Home() {
                   </span>
                 </div>
                 <h3 className="relative mt-5 font-display text-2xl font-semibold text-ink sm:text-3xl">
-                  Business Design Clinic
+                  Venture Backability Clinic
                 </h3>
                 <p className="relative mt-3 italic text-forest-700">
                   “You can&apos;t tell a good story if you don&apos;t have a story.”
@@ -674,11 +683,16 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-wider text-forest-700">Deliverables</p>
                   <ul className="mt-3 space-y-2 text-sm text-ink-soft">
                     <li className="flex gap-2">
-                      <Icon.Doc className="h-[18px] w-[18px] shrink-0 text-emerald" />A pre-approved lean canvas
+                      <Icon.Check className="h-[18px] w-[18px] shrink-0 text-emerald" /> Approved Lean Canvas
                     </li>
                     <li className="flex gap-2">
-                      <Icon.Coins className="h-[18px] w-[18px] shrink-0 text-emerald" />A funding request submitted to ≥ 2
-                      funds actively deploying
+                      <Icon.Doc className="h-[18px] w-[18px] shrink-0 text-emerald" /> Venture Backability Report
+                    </li>
+                    <li className="flex gap-2">
+                      <Icon.Coins className="h-[18px] w-[18px] shrink-0 text-emerald" /> Submission to 2 actively deploying funds (qualified ventures)
+                    </li>
+                    <li className="flex gap-2">
+                      <Icon.Doc className="h-[18px] w-[18px] shrink-0 text-emerald" /> Funding Strategy Memo
                     </li>
                   </ul>
                 </div>
@@ -727,7 +741,7 @@ export default function Home() {
                   {[
                     "Startup funding theories & the venture-finance landscape",
                     "Developing your fundraising strategy",
-                    "Fundraising capstone & mentorship",
+                    "Fundraising capstone & accelerator support",
                     "Flipped classroom + group coaching",
                     "Capstone & fundraising hackathon",
                     "Fortnightly check-ins and field support",
@@ -746,22 +760,33 @@ export default function Home() {
                   <ul className="mt-3 space-y-2 text-sm text-cream/85">
                     <li className="flex gap-2">
                       <Icon.Check className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
-                      Complete the asynchronous fundraising course
+                      Capital Raise Strategy and Fundraising Plan
+                    </li>
+                    <li className="flex gap-2">
+                      <Icon.Doc className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
+                      Fundraising Data Room
                     </li>
                     <li className="flex gap-2">
                       <Icon.Users className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
-                      Build your fundraising plan with your group
+                      Investor Target List
                     </li>
                     <li className="flex gap-2">
                       <Icon.Rocket className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
-                      Launch a real raise with expert review & field support
+                      Investor Outreach Campaign
+                    </li>
+                    <li className="flex gap-2">
+                      <Icon.Check className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
+                      Fundraising CRM
+                    </li>
+                    <li className="flex gap-2">
+                      <Icon.Users className="h-[18px] w-[18px] shrink-0 text-emerald-bright" />
+                      Investor Engagement Support
                     </li>
                   </ul>
                 </div>
 
                 <p className="relative mt-6 text-sm leading-relaxed text-cream/65">
-                  Top performers gain access to curated investors, syndicate programs and allied funds. A shorter 6–8
-                  week track exists, but we encourage the full 12 weeks for better synthesis into an actual raise.
+                  Top performers gain access to curated investors, syndicate programs and allied funds. A shorter track may be offered at discretion, but we encourage the full 12 weeks for better synthesis into an actual raise.
                 </p>
               </div>
             </Reveal>
@@ -791,11 +816,11 @@ export default function Home() {
               {
                 when: "Jul 31, 2026",
                 title: "Cohort begins",
-                desc: "Design clinic opens for accepted founders.",
+                desc: "Venture Backability Clinic opens for accepted founders.",
               },
               {
                 when: "Weeks 1–4",
-                title: "Business design clinic",
+                title: "Venture Backability Clinic",
                 desc: "Sharpen the model. Submit first funding requests.",
               },
               {
@@ -916,10 +941,10 @@ export default function Home() {
             <Reveal>
               <Eyebrow>Cost of participation</Eyebrow>
               <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[2.9rem]">
-                The mentorship is <span className="text-emerald-gild">entirely free.</span>
+                The accelerator is <span className="text-emerald-gild">entirely free.</span>
               </h2>
               <p className="mt-5 text-lg text-muted">
-                Only the optional Business Design Clinic carries a subsidized, non-refundable fee — a quality filter to
+                Only the optional Venture Backability Clinic carries a subsidized, non-refundable fee — a quality filter to
                 keep the cohort committed. Here&apos;s how the pilot-cohort pricing works.
               </p>
             </Reveal>
@@ -971,12 +996,12 @@ export default function Home() {
               {
                 tag: "Standard pilot",
                 single: "$299",
-                duo: "$350",
+                duo: "$419",
                 was: "$499",
                 save: "40% pilot discount",
                 note: "single · / two co-founders",
                 features: [
-                  "2 or 4-week Business Design Clinic",
+                  "2 or 4-week Venture Backability Clinic",
                   "Pre-approved lean canvas",
                   "Funding request to ≥2 active funds",
                   "Free entry to the 12-week accelerator",
@@ -986,7 +1011,7 @@ export default function Home() {
               {
                 tag: "Need-based",
                 single: "$119",
-                duo: "$162",
+                duo: "$167",
                 was: "$299",
                 save: "Up to 60% off",
                 note: "single · / two co-founders",
@@ -1006,7 +1031,7 @@ export default function Home() {
                 save: "Clinic waived",
                 note: "Skip straight to consideration",
                 features: [
-                  "Skip the design clinic entirely",
+                  "Skip the Venture Backability Clinic entirely",
                   "Straight to accelerator consideration",
                   "Validated by your prior priced round",
                   "Focus on performance, not re-validation",
@@ -1107,9 +1132,10 @@ export default function Home() {
             <div className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-none border border-forest-900/10 bg-white/50 px-5 py-4 backdrop-blur">
               <Icon.Doc className="mt-0.5 h-4 w-4 shrink-0 text-forest-700" />
               <p className="text-xs leading-relaxed text-muted">
-                <span className="font-semibold text-forest-700">Refunds:</span> the $119 need-based rate is
-                non-refundable. The $299 rate is fully refundable up to 2 weeks before start, 50% up to 7 days before —
-                no refund once the clinic begins, including for no-shows. Acceptance is on a rolling basis.
+                <span className="font-semibold text-forest-700">Refunds:</span> the need-based fee reduction category is
+                non-refundable. The standard subsidized clinic fee is eligible for a 100% refund up to four (4) weeks
+                before program start, and a 60% refund up to two (2) weeks before program start. No refunds are available
+                after the clinic begins.
               </p>
             </div>
           </Reveal>
@@ -1130,11 +1156,11 @@ export default function Home() {
               <Reveal>
                 <Eyebrow>How to apply</Eyebrow>
                 <h2 className="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-[3rem]">
-                  Four steps to your <span className="text-gild">strongest raise yet.</span>
+                  Five steps to your <span className="text-gild">strongest raise yet.</span>
                 </h2>
                 <p className="mt-5 text-lg text-cream/70">
                   The application is simple and honest. Be detailed — once accepted, you&apos;ll create a profile and pay
-                  for the design clinic within 7 days.
+                  for the Venture Backability Clinic within 7 days.
                 </p>
               </Reveal>
 
@@ -1162,6 +1188,11 @@ export default function Home() {
                 {[
                   {
                     icon: Icon.Doc,
+                    title: "Review FAQs & Brochure",
+                    body: "Read the program brochure and FAQs to ensure you understand the program before applying.",
+                  },
+                  {
+                    icon: Icon.Compass,
                     title: "Submit your application",
                     body: "Complete the form at pipeline.amstevehouse.com with a pitch deck, business plan or supporting material.",
                   },
@@ -1173,7 +1204,7 @@ export default function Home() {
                   {
                     icon: Icon.Coins,
                     title: "Create a profile & pay",
-                    body: "If approved, set up your profile and settle the (subsidized) design-clinic fee within 7 days.",
+                    body: "If approved, set up your profile and settle the subsidized clinic fee within 7 days.",
                   },
                   {
                     icon: Icon.Rocket,
@@ -1252,16 +1283,43 @@ export default function Home() {
                 Apply now
                 <Icon.Arrow className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
-              <a
-                href="#structure"
+              <button
+                onClick={() => setShowBrochure(true)}
                 className="inline-flex items-center gap-2 rounded-none border border-cream/20 bg-white/5 px-8 py-4 text-base font-semibold text-cream backdrop-blur transition-all duration-300 hover:bg-white/10"
               >
-                Review the program
-              </a>
+                View Program Brochure
+              </button>
             </div>
           </Reveal>
         </div>
       </section>
+
+      {/* ════════════════ BROCHURE MODAL ════════════════ */}
+      {showBrochure && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-forest-950/80 p-4 backdrop-blur-md transition-all duration-300">
+          <div className="relative w-full max-w-4xl rounded-none border border-gold/30 bg-forest-900 shadow-2xl p-2 md:p-4 transition-all duration-300">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-white/10 px-2">
+              <h3 className="font-display text-xl font-semibold text-cream">Program Brochure</h3>
+              <button
+                onClick={() => setShowBrochure(false)}
+                className="rounded-none p-1.5 text-cream/70 hover:text-cream hover:bg-white/10 transition-colors"
+                aria-label="Close modal"
+              >
+                <Icon.Close className="h-6 w-6" />
+              </button>
+            </div>
+            {/* Modal Body (iframe) */}
+            <div className="relative w-full aspect-[4/3] mt-4 overflow-hidden bg-forest-950">
+              <iframe
+                src="https://docsend.com/view/kwdwuug6b7m6rttq"
+                allow="fullscreen"
+                className="absolute inset-0 w-full h-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ════════════════ FOOTER ════════════════ */}
       <footer className="bg-forest-950 py-12 text-cream/60">
