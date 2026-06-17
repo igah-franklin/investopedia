@@ -40,8 +40,7 @@ function ReviewRow({ app, onReviewed }: { app: Application; onReviewed: () => vo
         <div>
           <h3 className="font-display text-xl font-semibold tracking-tight text-ink">{app.startupName}</h3>
           <p className="mt-1 text-sm text-muted">
-            {app.founderName} · {founder} · {app.applicationType.replace("-", " ")} · {app.raiseType} $
-            {app.raiseAmountUsd.toLocaleString()}
+            {app.founderName} · {founder} · {app.applicationType.replace("-", " ")} · {Array.isArray(app.raiseType) ? app.raiseType.join(", ") : app.raiseType} · USD {typeof app.raiseAmountUsd === "number" ? app.raiseAmountUsd.toLocaleString() : app.raiseAmountUsd}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -56,8 +55,99 @@ function ReviewRow({ app, onReviewed }: { app: Application; onReviewed: () => vo
         {app.oneLiner && <p className="sm:col-span-2"><span className="text-muted">One-liner:</span> {app.oneLiner}</p>}
         <p><span className="text-muted">Stage:</span> {app.stage}</p>
         <p><span className="text-muted">Founders:</span> {app.founders}{app.coFounderName ? ` (+${app.coFounderName})` : ""}</p>
-        <p><span className="text-muted">hq in Africa:</span> {app.headquarteredInAfrica ? "Yes" : "No"}</p>
-        <p><span className="text-muted">Incorporated:</span> {app.incorporatedInAfrica ? "Yes" : "No"}</p>
+        <p>
+          <span className="text-muted">hq in Africa:</span>{" "}
+          {typeof app.headquarteredInAfrica === "boolean"
+            ? app.headquarteredInAfrica
+              ? "Yes"
+              : "No"
+            : app.headquarteredInAfrica === "yes"
+            ? "Yes"
+            : app.headquarteredInAfrica === "planning"
+            ? "Planning to"
+            : "No"}
+        </p>
+        <p>
+          <span className="text-muted">Incorporated:</span>{" "}
+          {typeof app.incorporatedInAfrica === "boolean"
+            ? app.incorporatedInAfrica
+              ? "Yes"
+              : "No"
+            : app.incorporatedInAfrica === "yes"
+            ? "Yes"
+            : app.incorporatedInAfrica === "planning"
+            ? "Planning to"
+            : "No"}
+        </p>
+        {app.founderSocialLinks && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">Founder Links:</span> {app.founderSocialLinks}
+          </p>
+        )}
+        {app.coFounderSocialLinks && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">Co-founder Links:</span> {app.coFounderSocialLinks}
+          </p>
+        )}
+        {(app.pitchDeckUrl || app.businessPlanUrl) && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">Deck/Plan:</span>{" "}
+            <a
+              href={app.pitchDeckUrl || app.businessPlanUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald hover:underline font-medium"
+            >
+              {app.pitchDeckUrl || app.businessPlanUrl}
+            </a>
+          </p>
+        )}
+        {app.videoUrl && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">Video Presentation:</span>{" "}
+            <a
+              href={app.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald hover:underline font-medium"
+            >
+              {app.videoUrl}
+            </a>
+          </p>
+        )}
+        {app.aboutVenture ? (
+          <p className="sm:col-span-2">
+            <span className="text-muted">About Venture:</span> {app.aboutVenture}
+          </p>
+        ) : (
+          <>
+            {app.problem && (
+              <p className="sm:col-span-2">
+                <span className="text-muted">Problem:</span> {app.problem}
+              </p>
+            )}
+            {app.solution && (
+              <p className="sm:col-span-2">
+                <span className="text-muted">Solution:</span> {app.solution}
+              </p>
+            )}
+            {app.traction && (
+              <p className="sm:col-span-2">
+                <span className="text-muted">Traction:</span> {app.traction}
+              </p>
+            )}
+            {app.whyYou && (
+              <p className="sm:col-span-2">
+                <span className="text-muted">Why You:</span> {app.whyYou}
+              </p>
+            )}
+          </>
+        )}
+        {app.commitmentReason && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">Commitment Reason:</span> {app.commitmentReason}
+          </p>
+        )}
         {app.review?.reason && (
           <p className="sm:col-span-2"><span className="text-muted">Decision note:</span> {app.review.reason}</p>
         )}

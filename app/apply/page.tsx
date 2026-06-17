@@ -26,7 +26,57 @@ const AFRICA_LABELS: Record<string, string> = {
   "non-african-for-africa": "Non-African building for an African market",
 };
 
-type FormShape = Record<string, string | boolean>;
+const RAISE_TYPE_OPTIONS = [
+  "Grants",
+  "Equity Investment",
+  "Venture Debt",
+  "Revenue-Based Financing",
+  "Convertible Note/SAFE",
+  "Crowdfunding",
+  "Strategic Partnerships",
+  "Not Yet Sure",
+  "Others"
+];
+
+const AMOUNT_OPTIONS = [
+  "Less than $20,000",
+  "$20,000–$50,000",
+  "$50,001–$100,000",
+  "$100,001–$250,000",
+  "$250,001–$500,000",
+  "$500,001–$1M",
+  "Above $1M"
+];
+
+type FormShape = {
+  founderName: string;
+  email: string;
+  phone: string;
+  startupName: string;
+  website: string;
+  applicationType: ApplicationType;
+  founders: "single" | "duo";
+  coFounderName: string;
+  coFounderEmail: string;
+  coFounderSocialLinks: string;
+  stage: string;
+  raiseType: string[];
+  raiseAmountUsd: string;
+  raiseAmountUsdSelect: string;
+  raiseAmountUsdCustom: string;
+  buildingForAfrica: string;
+  headquarteredInAfrica: string;
+  incorporatedInAfrica: string;
+  country: string;
+  oneLiner: string;
+  aboutVenture: string;
+  pitchDeckUrl: string;
+  videoUrl: string;
+  founderSocialLinks: string;
+  commitmentReason: string;
+  needBasedReason: string;
+  agreeToTerms: boolean;
+};
 
 const initial: FormShape = {
   founderName: "",
@@ -38,19 +88,22 @@ const initial: FormShape = {
   founders: "single",
   coFounderName: "",
   coFounderEmail: "",
+  coFounderSocialLinks: "",
   stage: "pre-seed",
-  raiseType: "equity",
+  raiseType: [],
   raiseAmountUsd: "",
+  raiseAmountUsdSelect: "",
+  raiseAmountUsdCustom: "",
   buildingForAfrica: "african-in-africa",
-  headquarteredInAfrica: "true",
-  incorporatedInAfrica: "true",
+  headquarteredInAfrica: "yes",
+  incorporatedInAfrica: "yes",
   country: "",
   oneLiner: "",
-  problem: "",
-  solution: "",
-  traction: "",
-  whyYou: "",
-  businessPlanUrl: "",
+  aboutVenture: "",
+  pitchDeckUrl: "",
+  videoUrl: "",
+  founderSocialLinks: "",
+  commitmentReason: "",
   needBasedReason: "",
   agreeToTerms: false,
 };
@@ -65,7 +118,7 @@ export default function ApplyPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
 
-  const set = (key: string, value: string | boolean) => setForm((f) => ({ ...f, [key]: value }));
+  const set = (key: string, value: string | boolean | string[]) => setForm((f) => ({ ...f, [key]: value }));
 
   // Gate + prefill.
   useEffect(() => {
@@ -103,11 +156,9 @@ export default function ApplyPage() {
 
     try {
       const recaptchaToken = await executeRecaptcha("submit_application");
+      const { raiseAmountUsdSelect, raiseAmountUsdCustom, ...formToSubmit } = form;
       const payload = {
-        ...form,
-        raiseAmountUsd: Number(form.raiseAmountUsd),
-        headquarteredInAfrica: form.headquarteredInAfrica === "true",
-        incorporatedInAfrica: form.incorporatedInAfrica === "true",
+        ...formToSubmit,
         agreeToTerms: form.agreeToTerms === true,
         recaptchaToken,
       };
@@ -150,7 +201,7 @@ export default function ApplyPage() {
         </h1>
         <p className="mt-3 text-muted">
           Be honest and detailed — this is reviewed for fit and venture-backability. The accelerator is free; only the
-          optional design clinic carries a subsidized fee.
+          optional Venture Backability Clinic carries a subsidized fee.
         </p>
 
         {error && (
@@ -176,10 +227,10 @@ export default function ApplyPage() {
               <Field label="Website" error={fieldErrors.website}>
                 <Input value={form.website as string} onChange={(e) => set("website", e.target.value)} placeholder="https://yourstartup.com" />
               </Field>
-              <Field label="Phone" error={fieldErrors.phone}>
+              <Field label="Phone" hint="Must be WhatsApp-enabled" error={fieldErrors.phone}>
                 <Input type="tel" value={form.phone as string} onChange={(e) => set("phone", e.target.value)} placeholder="+234 800 000 0000" />
               </Field>
-              <Field label="Country" error={fieldErrors.country}>
+              <Field label="Country" required error={fieldErrors.country}>
                 <Combobox
                   value={form.country as string}
                   onChange={(v) => set("country", v)}
@@ -187,6 +238,11 @@ export default function ApplyPage() {
                   placeholder="Search for your country"
                 />
               </Field>
+              <div className="sm:col-span-2">
+                <Field label="Founder social media/online links" hint="Optional" error={fieldErrors.founderSocialLinks}>
+                  <Input value={form.founderSocialLinks as string} onChange={(e) => set("founderSocialLinks", e.target.value)} placeholder="LinkedIn, Twitter, Github, etc." />
+                </Field>
+              </div>
             </div>
           </section>
 
@@ -215,6 +271,11 @@ export default function ApplyPage() {
                   <Field label="Co-founder email" error={fieldErrors.coFounderEmail}>
                     <Input type="email" value={form.coFounderEmail as string} onChange={(e) => set("coFounderEmail", e.target.value)} placeholder="cofounder@startup.com" />
                   </Field>
+                  <div className="sm:col-span-2">
+                    <Field label="Co-founder social media/online links" hint="Optional" error={fieldErrors.coFounderSocialLinks}>
+                      <Input value={form.coFounderSocialLinks as string} onChange={(e) => set("coFounderSocialLinks", e.target.value)} placeholder="LinkedIn, Twitter, etc." />
+                    </Field>
+                  </div>
                 </>
               )}
             </div>
@@ -222,15 +283,14 @@ export default function ApplyPage() {
               <div className="rounded-none border border-gold/30 bg-gold-soft/25 px-5 py-4 text-sm text-ink-soft">
                 {price.requiresPayment ? (
                   <>
-                    Business Design Clinic fee:{" "}
+                    Venture Backability Clinic fee:{" "}
                     <span className="font-display text-lg font-semibold text-forest-800">
-                      {/* {price.currency}  */}
                       USD {price.amount}
                     </span>{" "}
                     — payable only after you&apos;re approved. The 12-week accelerator is free.
                   </>
                 ) : (
-                  <>The design-clinic fee is <span className="font-semibold text-forest-800">waived</span> for venture-backed founders. The accelerator is free.</>
+                  <>The Venture Backability Clinic fee is <span className="font-semibold text-forest-800">waived</span> for venture-backed founders. The accelerator is free.</>
                 )}
               </div>
             )}
@@ -244,29 +304,74 @@ export default function ApplyPage() {
           {/* Raise */}
           <section className="space-y-5 rounded-none border border-forest-900/10 bg-white/60 p-6 sm:p-8">
             <h2 className="font-display text-xl font-semibold text-ink">Your raise</h2>
-            <div className="grid gap-5 sm:grid-cols-3">
-              <Field label="Stage" required error={fieldErrors.stage}>
-                <Select value={form.stage as string} onChange={(e) => set("stage", e.target.value)}>
-                  {Object.entries(STAGE_LABELS).map(([v, l]) => (
-                    <option key={v} value={v}>{l}</option>
-                  ))}
-                </Select>
-              </Field>
-              <Field label="Raise type" required error={fieldErrors.raiseType}>
-                <Select value={form.raiseType as string} onChange={(e) => set("raiseType", e.target.value)}>
-                  <option value="equity">Equity</option>
-                  <option value="debt">Debt</option>
-                </Select>
-              </Field>
-              <Field label="Amount (USD)" required hint="$20k – $1M" error={fieldErrors.raiseAmountUsd}>
-                <Input
-                  type="number"
-                  value={form.raiseAmountUsd as string}
-                  onChange={(e) => set("raiseAmountUsd", e.target.value)}
-                  placeholder="50000"
-                  min={1000}
-                  required
-                />
+            <div className="space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label="Stage" required error={fieldErrors.stage}>
+                  <Select value={form.stage as string} onChange={(e) => set("stage", e.target.value)}>
+                    {Object.entries(STAGE_LABELS).map(([v, l]) => (
+                      <option key={v} value={v}>{l}</option>
+                    ))}
+                  </Select>
+                </Field>
+                <Field label="Amount (USD)" required hint="$20k – $1M" error={fieldErrors.raiseAmountUsd}>
+                  <Select
+                    value={form.raiseAmountUsdSelect || ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      set("raiseAmountUsdSelect", val);
+                      if (val === "Above $1M") {
+                        set("raiseAmountUsd", "Above $1M");
+                      } else {
+                        set("raiseAmountUsd", val);
+                      }
+                    }}
+                    required
+                  >
+                    <option value="">Select range</option>
+                    {AMOUNT_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </Select>
+                  {form.raiseAmountUsdSelect === "Above $1M" && (
+                    <div className="mt-2">
+                      <Input
+                        value={form.raiseAmountUsdCustom || ""}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          set("raiseAmountUsdCustom", val);
+                          set("raiseAmountUsd", `Above $1M (${val})`);
+                        }}
+                        placeholder="Please specify (e.g., $1.5M, $2M)"
+                        required
+                      />
+                    </div>
+                  )}
+                </Field>
+              </div>
+
+              <Field label="Raise Type(s)" required hint="Select all that apply" error={fieldErrors.raiseType}>
+                <div className="grid gap-2 sm:grid-cols-2 mt-2">
+                  {RAISE_TYPE_OPTIONS.map((opt) => {
+                    const checked = (form.raiseType || []).includes(opt);
+                    return (
+                      <label key={opt} className="flex items-center gap-3 text-sm text-ink-soft cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={(e) => {
+                            const current = form.raiseType || [];
+                            const next = e.target.checked
+                              ? [...current, opt]
+                              : current.filter((x) => x !== opt);
+                            set("raiseType", next);
+                          }}
+                          className="h-4 w-4 accent-emerald rounded border-forest-900/20"
+                        />
+                        <span>{opt}</span>
+                      </label>
+                    );
+                  })}
+                </div>
               </Field>
             </div>
           </section>
@@ -285,14 +390,16 @@ export default function ApplyPage() {
               <div />
               <Field label="Headquartered in Africa?" required error={fieldErrors.headquarteredInAfrica}>
                 <Select value={form.headquarteredInAfrica as string} onChange={(e) => set("headquarteredInAfrica", e.target.value)}>
-                  <option value="true">Yes (or planning to)</option>
-                  <option value="false">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="planning">Planning to</option>
+                  <option value="no">No</option>
                 </Select>
               </Field>
               <Field label="Incorporated in Africa?" required error={fieldErrors.incorporatedInAfrica}>
                 <Select value={form.incorporatedInAfrica as string} onChange={(e) => set("incorporatedInAfrica", e.target.value)}>
-                  <option value="true">Yes (or planning to)</option>
-                  <option value="false">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="planning">Planning to</option>
+                  <option value="no">No</option>
                 </Select>
               </Field>
             </div>
@@ -304,20 +411,34 @@ export default function ApplyPage() {
             <Field label="One-liner" hint="What you do, in a sentence" required error={fieldErrors.oneLiner}>
               <Input value={form.oneLiner as string} onChange={(e) => set("oneLiner", e.target.value)} placeholder="We help X do Y so they can Z." maxLength={280} required />
             </Field>
-            <Field label="The problem" required error={fieldErrors.problem}>
-              <TextArea value={form.problem as string} onChange={(e) => set("problem", e.target.value)} placeholder="What painful, urgent problem are you solving, and for whom?" required />
+            <Field label="Tell us about your venture" required hint="Max 3000 characters. Please describe the problem, solution, traction, and team." error={fieldErrors.aboutVenture}>
+              <TextArea
+                value={form.aboutVenture as string}
+                onChange={(e) => set("aboutVenture", e.target.value)}
+                placeholder="Describe what your venture does, the problem you solve, your current traction, and why you are the team to build this."
+                maxLength={3000}
+                required
+              />
             </Field>
-            <Field label="Your solution" required error={fieldErrors.solution}>
-              <TextArea value={form.solution as string} onChange={(e) => set("solution", e.target.value)} placeholder="How does your product solve it? What makes your approach different?" required />
+            <Field label="Link to Pitch Deck, Business Plan or any Other Supporting Document" hint="Optional" error={fieldErrors.pitchDeckUrl}>
+              <Input value={form.pitchDeckUrl as string} onChange={(e) => set("pitchDeckUrl", e.target.value)} placeholder="https://drive.google.com/..." />
             </Field>
-            <Field label="Traction so far" required error={fieldErrors.traction}>
-              <TextArea value={form.traction as string} onChange={(e) => set("traction", e.target.value)} placeholder="Revenue, users, growth, pilots, LOIs — share the numbers that matter." required />
+            <Field label="Link to Your Video Presentation, Product Demo, etc." hint="Optional" error={fieldErrors.videoUrl}>
+              <Input value={form.videoUrl as string} onChange={(e) => set("videoUrl", e.target.value)} placeholder="https://youtube.com/... or https://loom.com/..." />
             </Field>
-            <Field label="Why you?" required error={fieldErrors.whyYou}>
-              <TextArea value={form.whyYou as string} onChange={(e) => set("whyYou", e.target.value)} placeholder="What makes you and your team uniquely able to win this market?" required />
-            </Field>
-            <Field label="Business plan URL" hint="Optional" error={fieldErrors.businessPlanUrl}>
-              <Input value={form.businessPlanUrl as string} onChange={(e) => set("businessPlanUrl", e.target.value)} placeholder="https://docs.google.com/…" />
+          </section>
+
+          {/* Commitment */}
+          <section className="space-y-5 rounded-none border border-forest-900/10 bg-white/60 p-6 sm:p-8">
+            <h2 className="font-display text-xl font-semibold text-ink">Commitment &amp; timing</h2>
+            <Field label="Why is now the right time for you to join this program?" required hint="Max 2000 characters" error={fieldErrors.commitmentReason}>
+              <TextArea
+                value={form.commitmentReason as string}
+                onChange={(e) => set("commitmentReason", e.target.value)}
+                placeholder="Explain why this cohort's timing fits your fundraising goals and what you hope to achieve."
+                maxLength={2000}
+                required
+              />
             </Field>
           </section>
 
@@ -331,7 +452,7 @@ export default function ApplyPage() {
             />
             <span className="text-sm text-ink-soft">
               I confirm the information is accurate and I agree to the program terms. If approved, I&apos;ll pay the
-              (subsidized) design-clinic fee within 7 days where applicable.
+              subsidized Venture Backability Clinic fee within 7 days where applicable.
             </span>
           </label>
           {fieldErrors.agreeToTerms && <p className="text-xs font-medium text-red-600">{fieldErrors.agreeToTerms}</p>}
