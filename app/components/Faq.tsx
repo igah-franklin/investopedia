@@ -55,7 +55,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is financial support available?",
-        a: "Yes. Founders who apply and onboard well ahead of June 30, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
+        a: "Yes. Founders who apply and onboard well ahead of July 14, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
       },
       {
         q: "Why is there a fee for the Venture Readiness Clinic?",
@@ -63,7 +63,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is need-based support guaranteed?",
-        a: "No. Support is limited and awarded on a rolling basis. Availability may close before June 30 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of June 30, 2026.",
+        a: "No. Support is limited and awarded on a rolling basis. Availability may close before July 14 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of July 14, 2026.",
       },
     ],
   },
