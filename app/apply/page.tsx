@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useAuth } from "../lib/auth";
 import { applications, ApiError, type FormConfig, type ApplicationType } from "../lib/api";
 import AppShell from "../components/AppShell";
@@ -451,8 +452,11 @@ export default function ApplyPage() {
               required
             />
             <span className="text-sm text-ink-soft">
-              I confirm the information is accurate and I agree to the program terms. If approved, I&apos;ll pay the
-              subsidized Venture Backability Clinic fee within 7 days where applicable.
+              I confirm that the information I have provided is accurate to the best of my knowledge and that I agree to the Program&apos;s{" "}
+              <Link href="/agreement" target="_blank" className="font-semibold text-emerald hover:underline">
+                Founder Participation Agreement
+              </Link>
+              . If accepted into the program, I will pay the applicable Founder Commitment Contribution within seven (7) days of admission.
             </span>
           </label>
           {fieldErrors.agreeToTerms && <p className="text-xs font-medium text-red-600">{fieldErrors.agreeToTerms}</p>}
