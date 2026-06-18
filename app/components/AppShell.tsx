@@ -24,16 +24,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-cream">
       <header className="sticky top-0 z-40 border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Pipeline home">
-            <span className="grid h-9 w-9 place-items-center rounded-none bg-forest-800 ring-1 ring-emerald/30">
-              <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
-            </span>
-            <span className="hidden flex-col leading-none sm:flex">
-              <span className="font-display text-[1.05rem] font-semibold tracking-tight text-ink">Pipeline</span>
-              <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-emerald">
-                Pipeline Program
-              </span>
-            </span>
+          <Link href="/" className="flex items-center gap-2.5" aria-label="InvestoVilla home">
+            <img
+              src="/investovilla-logo.jpg"
+              alt="InvestoVilla Logo"
+              className="h-9 w-auto object-contain"
+            />
           </Link>
 
           <div className="flex items-center gap-1">

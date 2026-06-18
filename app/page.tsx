@@ -436,26 +436,34 @@ export default function Home() {
             </Reveal>
 
             {/* narrative */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 space-y-6">
               <Reveal delay={120}>
-                <p className="text-lg leading-relaxed text-ink-soft">
-                  The venture-financing landscape is turning brutal for early-stage African startups — fewer small
-                  cheques, relatively more mid-sized ones. That gap is driven by{" "}
-                  <span className="font-medium text-forest-700">perceived rather than actual risk</span>, and it hits
-                  hardest for founders without structured guidance or deep market experience.
+                <h3 className="font-display text-xl font-bold text-ink">Why This Program Exists</h3>
+                <p className="mt-3 text-[0.97rem] leading-relaxed text-ink-soft">
+                  Raising capital in Africa is not getting easier. Investors are writing fewer cheques. Competition for capital is increasing. Due diligence is becoming more rigorous, and founders are expected to demonstrate stronger fundamentals much earlier than before.
+                </p>
+                <p className="mt-3 text-[0.97rem] leading-relaxed text-ink-soft">
+                  Yet many promising ventures are still approaching fundraising without the preparation needed to compete effectively. The challenge is not always the quality of the idea — more often, it is a readiness problem.
                 </p>
               </Reveal>
               <Reveal delay={200}>
-                <div className="mt-8 rounded-none border-l-4 border-gold bg-gold-soft/30 p-6">
-                  <p className="text-[0.97rem] leading-relaxed text-ink-soft">
-                    <span className="font-semibold text-forest-800">Our answer:</span> a practical, action-learning
-                    accelerator — built on real market experience — that walks beside you, step by step, until your round
-                    closes on the best possible terms.
+                <div className="rounded-none border-l-4 border-gold bg-gold-soft/30 p-5">
+                  <p className="text-[0.95rem] leading-relaxed text-ink-soft">
+                    <span className="font-semibold text-forest-800">Our answer:</span> a practical, action-learning accelerator — built on real market experience — that walks beside you, step by step, until your round closes on the best possible terms.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={280}>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <h3 className="font-display text-xl font-bold text-ink pt-2">Not another training program</h3>
+                <p className="mt-3 text-[0.97rem] leading-relaxed text-ink-soft">
+                  IPDPE is a hands-on experience designed to help founders understand what investors look for, strengthen the fundamentals of their ventures, and develop a more disciplined approach to fundraising.
+                </p>
+                <p className="mt-3 text-[0.97rem] leading-relaxed text-ink-soft">
+                  Participants receive structured support throughout their fundraising journey while enjoying access to an unrivalled proprietary investor-readiness diagnostic that generates both a founder-facing and investor-facing report.
+                </p>
+              </Reveal>
+              <Reveal delay={360}>
+                <div className="mt-4 flex flex-wrap gap-2">
                   {["Action-learning", "Real funds", "Built for Africa"].map((t) => (
                     <span
                       key={t}
@@ -491,7 +499,7 @@ export default function Home() {
               {
                 icon: Icon.Coins,
                 title: "Close the best deal",
-                body: "Aim to close your round in record time — and on the strongest terms with your investors.",
+                body: "Aim to raise faster — and on the strongest terms with your investors.",
               },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 90}>
@@ -534,7 +542,7 @@ export default function Home() {
             <Reveal className="lg:col-span-5">
               <div className="group relative h-full min-h-[22rem] overflow-hidden rounded-none border border-mint/15 shadow-[0_30px_80px_-45px_rgba(0,0,0,0.8)]">
                 <Image
-                  src={PHOTO.who}
+                  src="/image-4.jpg"
                   alt="A modern startup studio where founders build for the African market"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40rem"
@@ -638,7 +646,7 @@ export default function Home() {
                 <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gold/10 blur-2xl transition-all duration-700 group-hover:scale-150" />
                 <div className="relative -mx-8 -mt-8 mb-7 h-44 overflow-hidden sm:-mx-10 sm:-mt-10">
                   <Image
-                    src={PHOTO.clinic}
+                    src="/image-3.jpg"
                     alt="Founders in a focused business-design working session"
                     fill
                     sizes="(max-width: 1024px) 100vw, 36rem"
@@ -713,7 +721,7 @@ export default function Home() {
                 <div aria-hidden className="absolute inset-0 bg-grid-light opacity-40" />
                 <div className="relative -mx-8 -mt-8 mb-7 h-44 overflow-hidden sm:-mx-10 sm:-mt-10">
                   <Image
-                    src={PHOTO.accelerator}
+                    src="/image-2.jpg"
                     alt="A founding team building together — learning by doing"
                     fill
                     sizes="(max-width: 1024px) 100vw, 36rem"
@@ -941,11 +949,13 @@ export default function Home() {
             <Reveal>
               <Eyebrow>Cost of participation</Eyebrow>
               <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[2.9rem]">
-                The accelerator is <span className="text-emerald-gild">entirely free.</span>
+                The program is <span className="text-emerald-gild">entirely free.</span>
               </h2>
               <p className="mt-5 text-lg text-muted">
-                Only the optional Venture Backability Clinic carries a subsidized, non-refundable fee — a quality filter to
-                keep the cohort committed. Here&apos;s how the pilot-cohort pricing works.
+                Accepted founders however required to make Founder Commitment
+                Contribution – a quality filter to keep the cohort committed and also cover the subsidized cost
+                of the InvestoVilla Venture Backability Assessment™ (IVBA).
+                Below are the details of the applicable Founder Commitment Contribution fee
               </p>
             </Reveal>
           </div>
@@ -1326,9 +1336,11 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col items-center justify-between gap-6 border-b border-mint/10 pb-8 sm:flex-row">
             <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-none bg-forest-800 ring-1 ring-emerald/30">
-                <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
-              </span>
+              <img
+                src="/investovilla-icon.png"
+                alt="InvestoVilla Icon"
+                className="h-9 w-auto object-contain"
+              />
               <div className="flex flex-col leading-none">
                 <span className="font-display text-[1.05rem] font-semibold text-cream">investovilla</span>
                 <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-emerald">
