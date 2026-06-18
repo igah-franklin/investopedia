@@ -6,25 +6,25 @@
    deep forest greens, warm cream, gilded gold.
 ─────────────────────────────────────────────── */
 @theme inline {
-  --color-cream: #f6f2e8;
-  --color-cream-soft: #fcf9f2;
+  --color-cream: #f0f6f6;
+  --color-cream-soft: #f6faf9;
 
-  --color-ink: #0a1712;
-  --color-ink-soft: #29372f;
-  --color-muted: #5a685f;
+  --color-ink: #051b24;
+  --color-ink-soft: #1e3540;
+  --color-muted: #506e7a;
 
-  --color-forest-950: #03110d;
-  --color-forest-900: #062018;
-  --color-forest-800: #093024;
-  --color-forest-700: #0b4332;
-  --color-forest-600: #0e5b43;
-  --color-emerald: #11a079;
-  --color-emerald-bright: #2bd9a2;
-  --color-mint: #a7f3d6;
+  --color-forest-950: #020d14;
+  --color-forest-900: #051824;
+  --color-forest-800: #092233;
+  --color-forest-700: #0d324d;
+  --color-forest-600: #114366;
+  --color-emerald: #209030;
+  --color-emerald-bright: #25a639;
+  --color-mint: #dcfce7;
 
-  --color-gold: #c89b48;
-  --color-gold-bright: #edc96b;
-  --color-gold-soft: #f3e0ad;
+  --color-gold: #0070a0;
+  --color-gold-bright: #008bc7;
+  --color-gold-soft: #e0f4fe;
 
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);

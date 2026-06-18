@@ -52,11 +52,12 @@ export default function ResetPasswordPage() {
   return (
     <div className="grid min-h-screen place-items-center bg-cream px-5 py-16">
       <div className="w-full max-w-md">
-        <Link href="/" className="mb-8 flex items-center justify-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-none bg-forest-800 ring-1 ring-emerald/30">
-            <span className="font-display text-lg font-semibold text-gold-bright">iV</span>
-          </span>
-          <span className="font-display text-xl font-semibold tracking-tight text-ink">Pipeline</span>
+        <Link href="/" className="mb-8 flex items-center justify-center">
+          <img
+            src="/investovilla-logo.jpg"
+            alt="InvestoVilla Logo"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <div className="rounded-none border border-forest-900/10 bg-white/70 p-8 shadow-[0_24px_70px_-44px_rgba(8,35,27,0.5)] backdrop-blur">
