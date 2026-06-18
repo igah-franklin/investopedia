@@ -17,7 +17,7 @@ export default function AgreementPage() {
         <div className="mb-8 flex items-center justify-between border-b border-forest-900/10 pb-5">
           <Link href="/" className="flex items-center gap-2.5">
             <img
-              src="/investovilla-logo.jpg"
+              src="/investovilla-logo.png"
               alt="InvestoVilla Logo"
               className="h-10 w-auto object-contain"
             />

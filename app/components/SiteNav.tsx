@@ -47,7 +47,7 @@ export default function SiteNav() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5" aria-label="InvestoVilla home">
           <img
-            src="/investovilla-logo.jpg"
+            src="/investovilla-logo.png"
             alt="InvestoVilla Logo"
             className="h-9 w-auto object-contain"
           />
