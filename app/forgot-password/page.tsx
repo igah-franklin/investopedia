@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-md">
         <Link href="/" className="mb-8 flex items-center justify-center">
           <img
-            src="/investovilla-logo.jpg"
+            src="/investovilla-logo.png"
             alt="InvestoVilla Logo"
             className="h-10 w-auto object-contain"
           />

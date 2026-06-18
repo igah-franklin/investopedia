@@ -26,7 +26,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
           <Link href="/" className="flex items-center gap-2.5" aria-label="InvestoVilla home">
             <img
-              src="/investovilla-logo.jpg"
+              src="/investovilla-logo.png"
               alt="InvestoVilla Logo"
               className="h-9 w-auto object-contain"
             />
