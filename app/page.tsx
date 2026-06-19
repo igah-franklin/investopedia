@@ -213,7 +213,7 @@ export default function Home() {
                     href="#apply"
                     className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
                   >
-                    Apply before July 14 (Introductory Deadline)
+                    Apply before July 5 (Introductory Deadline)
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   <button
@@ -808,7 +808,7 @@ export default function Home() {
           {/* header */}
           <Reveal className="max-w-3xl">
             <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald">
-              § 05 — Timeline
+              Timeline
             </p>
             <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[3.1rem]">
               18 weeks, end to end.
@@ -822,7 +822,7 @@ export default function Home() {
           <div className="mt-14 border-t border-forest-900/12">
             {[
               {
-                when: "Jul 31, 2026",
+                when: "Aug 15, 2026",
                 title: "Cohort begins",
                 desc: "Venture Backability Clinic opens for accepted founders.",
               },
@@ -842,7 +842,7 @@ export default function Home() {
                 desc: "12 weeks of live raising under expert guidance.",
               },
               {
-                when: "Dec 4, 2026",
+                when: "Dec 19, 2026",
                 title: "Cohort closes",
                 desc: "Capstone, mentor reviews, investor introductions.",
               },
@@ -981,7 +981,7 @@ export default function Home() {
                 </div>
                 <div className="shrink-0 border-mint/15 sm:border-l sm:pl-10 sm:text-right">
                   <div className="font-display text-6xl font-semibold leading-none text-gild">$0</div>
-                  <p className="mt-2 text-xs text-cream/60">You only pay for the optional clinic</p>
+                  <p className="mt-2 text-xs text-cream/60">You only pay for the Venture Backability Assessment</p>
                 </div>
               </div>
             </div>
@@ -994,7 +994,7 @@ export default function Home() {
                 <Icon.Clock className="h-5 w-5" />
               </span>
               <p className="text-sm leading-relaxed text-ink-soft">
-                <span className="font-semibold text-forest-800">Introductory deadline · July 14, 2026.</span> Early
+                <span className="font-semibold text-forest-800">Introductory deadline · july 5, 2026.</span> Early
                 applicants can request a need-based reduction — offered first-come, first-served, and closing
                 automatically once half the seats are filled.
               </p>
@@ -1252,7 +1252,7 @@ export default function Home() {
               <div className="lg:sticky lg:top-28">
                 <Reveal>
                   <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald">
-                    § #06 — Questions
+                    FAQs
                   </p>
                   <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink sm:text-[3.1rem]">
                     Frequently asked.

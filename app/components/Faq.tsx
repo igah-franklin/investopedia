@@ -22,7 +22,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "What are the current program dates?",
-        a: "The current proposed schedule runs from July 31, 2026 through December 4, 2026. Dates may be adjusted based on operational considerations and participant needs.",
+        a: "The current proposed schedule runs from August 15, 2026 through December 19, 2026. Dates may be adjusted based on operational considerations and participant needs.",
       },
       {
         q: "Is the program only for startups already raising capital?",
@@ -55,15 +55,15 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is financial support available?",
-        a: "Yes. Founders who apply and onboard well ahead of July 14, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
+        a: "Yes. Founders who apply and onboard well ahead of july 5, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
       },
       {
         q: "Why is there a fee for the Venture Readiness Clinic?",
-        a: "The Fundraising Accelerator is delivered entirely free of charge because we believe founders should not have to give up equity or pay significant fees simply to access fundraising support. The Venture Readiness Clinic is different. It includes structured diagnostics, venture reviews, consulting support, personalized feedback, and the InvestoVilla Venture Backability Assessment™—our proprietary venture readiness assessment designed to help founders understand how investors are likely to evaluate their businesses. The clinic fee serves two purposes: first, it helps cover part of the cost of delivering these assessments and consulting activities; second, it acts as a commitment filter.",
+        a: "The Fundraising Accelerator is delivered entirely free of charge because we believe founders should not have to give up equity or pay significant fees simply to access fundraising support. The Venture Readiness Clinic is also free but different—it includes structured diagnostics, venture reviews, consulting support, personalized feedback, and the InvestoVilla Venture Backability Assessment™ (IVBA). The IVBA is paid for in the form of the Founder Commitment Contribution fee. The commitment fee serves two purposes: first, it helps cover part of the cost of delivering the assessment; second, it acts as a commitment filter. Fundraising is demanding, and experience has shown that founders who invest time, energy, and resources into preparation are more likely to engage fully with the process. This helps us maintain a high-quality founder community and a stronger pipeline for investors. Previously venture-backed startups may be eligible for exemption from parts or all of the Venture Readiness Clinic where prior funding history already provides sufficient validation of venture readiness.",
       },
       {
         q: "Is need-based support guaranteed?",
-        a: "No. Support is limited and awarded on a rolling basis. Availability may close before July 14 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of July 14, 2026.",
+        a: "No. Support is limited and awarded on a rolling basis. Availability may close before july 5 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of july 5, 2026.",
       },
     ],
   },
@@ -130,9 +130,8 @@ const FAQ_GROUPS: FaqGroup[] = [
 function Toggle({ open }: { open: boolean }) {
   return (
     <span
-      className={`relative mt-1.5 grid h-5 w-5 shrink-0 place-items-center text-emerald transition-transform duration-300 ${
-        open ? "rotate-45" : "group-hover:rotate-90"
-      }`}
+      className={`relative mt-1.5 grid h-5 w-5 shrink-0 place-items-center text-emerald transition-transform duration-300 ${open ? "rotate-45" : "group-hover:rotate-90"
+        }`}
     >
       <span className="absolute h-[1.5px] w-4 rounded-full bg-current" />
       <span className="absolute h-4 w-[1.5px] rounded-full bg-current" />
@@ -163,25 +162,22 @@ export default function Faq() {
                     aria-expanded={isOpen}
                   >
                     <span
-                      className={`mt-2 font-mono text-xs font-medium tabular-nums transition-colors duration-300 ${
-                        isOpen ? "text-emerald" : "text-emerald/55"
-                      }`}
+                      className={`mt-2 font-mono text-xs font-medium tabular-nums transition-colors duration-300 ${isOpen ? "text-emerald" : "text-emerald/55"
+                        }`}
                     >
                       {String(itemIdx + 1).padStart(2, "0")}
                     </span>
                     <span
-                      className={`flex-1 font-display text-lg font-medium leading-snug tracking-tight transition-colors duration-300 sm:text-[1.3rem] ${
-                        isOpen ? "text-forest-700" : "text-ink group-hover:text-forest-700"
-                      }`}
+                      className={`flex-1 font-display text-lg font-medium leading-snug tracking-tight transition-colors duration-300 sm:text-[1.3rem] ${isOpen ? "text-forest-700" : "text-ink group-hover:text-forest-700"
+                        }`}
                     >
                       {item.q}
                     </span>
                     <Toggle open={isOpen} />
                   </button>
                   <div
-                    className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}
+                    className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
                   >
                     <div className="overflow-hidden">
                       <p className="max-w-2xl pb-6 pl-[1.75rem] pr-8 text-[0.95rem] leading-relaxed text-muted sm:pl-[2.6rem]">
