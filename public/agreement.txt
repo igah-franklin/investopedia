@@ -19,7 +19,7 @@ communicated from time to time ("InvestoVilla", "we", "our", or "us");
 
 and
 
-=== Page 47 ===
+
 the individual founder, co-founder, authorised representative of a startup, or other eligible participant who has applied for admission into the Program
 and whose application has been accepted by InvestoVilla ("Founder", "Participant", "you", or "your").
 
@@ -51,7 +51,7 @@ The Founder acknowledges and agrees that:
 (b) participation in the Program does not constitute investment advisory services, legal advice, financial advice, tax advice, brokerage services,
 securities dealing, fiduciary services, or regulated investment management services;
 
-=== Page 48 ===
+
 (c) participation in the Program does not establish any partnership, joint venture, employment relationship, agency relationship, fiduciary
 relationship, or other form of legal association between InvestoVilla and the Founder beyond that expressly contemplated under this Agreement;
 
@@ -81,7 +81,7 @@ the Founder confirms that he or she has carefully reviewed, understood, and volu
 
 Such acceptance shall constitute a valid and legally binding agreement between the Founder and InvestoVilla.
 
-=== Page 49 ===
+
 1.5 Capacity and Authority
 
 The Founder represents and warrants that:
@@ -113,7 +113,7 @@ InvestoVilla reserves the right to amend, update, revise, or supplement this Agr
 Material amendments affecting participant rights or obligations shall be communicated through appropriate channels, including electronic
 communication or publication through designated Program platforms.
 
-=== Page 50 ===
+
 Continued participation following notification of such amendments shall constitute acceptance of the revised terms.
 
 
@@ -144,7 +144,7 @@ means any entity that directly or indirectly controls, is controlled by, or is u
 
 2.4 "Agreement"
 
-=== Page 51 ===
+
 means this Founder Participation Agreement, including any schedules, annexures, policies, notices, amendments, and documents expressly
 incorporated by reference.
 
@@ -176,7 +176,7 @@ preparatory activities.
 means any non-public information disclosed by either party, whether orally, visually, electronically, or in writing, which is designated as confidential
 or which reasonably ought to be regarded as confidential in light of its nature and surrounding circumstances.
 
-=== Page 52 ===
+
 Confidential Information includes trade secrets, Business Information, assessment methodologies, proprietary frameworks, technical information,
 investor information, fundraising strategies, and Program materials.
 
@@ -207,7 +207,7 @@ Venture Readiness Clinic and the InvestoVilla Venture Backability Assessment™,
 
 2.11 "InvestoVilla"
 
-=== Page 53 ===
+
 means INVESTOVILLA STARTUP-UNIVERSE LIMITED (RC 9373841), its successors, permitted assigns, affiliates, employees, officers,
 contractors, representatives, mentors, facilitators, consultants, and authorised agents acting within the scope of Program delivery.
 
@@ -239,7 +239,7 @@ means the InvestoVilla Pipeline Development Program for Entrepreneurs (IPDPE), i
 assessments, mentorship sessions, workshops, networking activities, educational resources, investor engagement support, and any ancillary activities
 organised by InvestoVilla.
 
-=== Page 54 ===
+
 2.16 "Program Materials"
 
 means all materials developed, owned, licensed, or provided by InvestoVilla in connection with the Program, including presentations, handbooks,
@@ -270,7 +270,7 @@ Without limitation, applicants should generally satisfy the following criteria:
 
 (a) the Founder is building a venture intended primarily to serve African markets;
 
-=== Page 55 ===
+
 (b) the Founder is an African founder, an African in the diaspora building for African markets, or a non-African founder developing solutions for
 African markets;
 
@@ -302,7 +302,7 @@ Applicants shall complete the application process prescribed by InvestoVilla, wh
 
 (g) video presentations; and
 
-=== Page 56 ===
+
 (h) such additional information as InvestoVilla may reasonably require.
 
 InvestoVilla reserves the right to verify information submitted during the application process.
@@ -335,7 +335,7 @@ InvestoVilla shall have no obligation to disclose reasons for rejecting any appl
 
 3.4 Conditional Admission
 
-=== Page 57 ===
+
 InvestoVilla may grant conditional admission subject to the fulfilment of specified requirements, including but not limited to:
 
 (a) payment of the applicable Founder Commitment Contribution;
@@ -367,7 +367,7 @@ or Startup;
 
 (e) the Founder will promptly notify InvestoVilla of any material changes affecting eligibility or participation.
 
-=== Page 58 ===
+
 3.6 Co-Founder Participation and Substitution
 
 Admission into the Program is personal to the admitted Founder(s).
@@ -396,7 +396,7 @@ InvestoVilla may review participant eligibility at any stage and may suspend, re
 
 (d) continued participation may adversely affect the integrity, reputation, safety, or effectiveness of the Program.
 
-=== Page 59 ===
+
 3.8 No Right to Admission or Continued Participation
 
 Participation in the Program is a privilege and not a right.
@@ -427,7 +427,7 @@ consisting of two primary phases:
 
 (b) the Fundraising Accelerator.
 
-=== Page 60 ===
+
 The Program may also substitute or include additional activities, events, workshops, mentoring sessions, investor engagement opportunities,
 ecosystem activities, follow-up support, or supplementary interventions as determined by InvestoVilla from time to time.
 
@@ -460,7 +460,7 @@ The Clinic may include, without limitation:
 
 (j) such additional activities as InvestoVilla may reasonably determine.
 
-=== Page 61 ===
+
 The Venture Readiness Clinic is designed on the principle that founders cannot effectively communicate an investment opportunity without first
 developing a venture capable of withstanding investor scrutiny.
 
@@ -492,7 +492,7 @@ some or all of the following:
 The precise nature and extent of deliverables may vary based on founder participation, Startup maturity, Program track, and operational
 considerations.
 
-=== Page 62 ===
+
 4.4 Fundraising Accelerator
 
 The Fundraising Accelerator is designed to provide practical fundraising execution support through structured action-learning methodologies.
@@ -523,7 +523,7 @@ The Accelerator may include:
 
 (l) Investor Pipeline Mapping activities; and
 
-=== Page 63 ===
+
 (m) such other activities as InvestoVilla may determine.
 
 The Accelerator is intended to support founders in launching, refining, or advancing actual fundraising efforts.
@@ -556,7 +556,7 @@ Participants progressing into the Accelerator may receive support relating to:
 
 (k) such other outputs as InvestoVilla considers appropriate.
 
-=== Page 64 ===
+
 InvestoVilla does not guarantee that any deliverable will result in investment or commercial success.
 
 
@@ -588,7 +588,7 @@ address participant needs, or manage unforeseen circumstances.
 
 4.8 Progression Between Program Phases
 
-=== Page 65 ===
+
 Admission into the Venture Readiness Clinic shall not automatically entitle a Founder to progression into the Fundraising Accelerator.
 
 Progression decisions shall be determined by InvestoVilla based on factors including:
@@ -621,7 +621,7 @@ However, founders participating in the Venture Readiness Clinic may be required 
 
 The Founder Commitment Contribution serves as:
 
-=== Page 66 ===
+
 (a) a contribution toward the costs associated with delivering the InvestoVilla Venture Backability Assessment™;
 
 (b) a mechanism to support venture diagnostics and consulting activities;
@@ -654,7 +654,7 @@ Such amounts may vary depending on:
 
 5.3 Need-Based Support
 
-=== Page 67 ===
+
 InvestoVilla may, at its discretion, provide fee reduction support to selected founders.
 
 Need-based support:
@@ -687,7 +687,7 @@ Where payment is required:
 
 5.5 Taxes and Charges
 
-=== Page 68 ===
+
 Founders shall be responsible for all transaction charges, foreign exchange costs, banking fees, taxes, duties, and similar costs associated with
 payments made under this Agreement.
 
@@ -720,7 +720,7 @@ Participants admitted under a need-based fee reduction category shall not be ent
 
 6.3 Standard Contribution Participants
 
-=== Page 69 ===
+
 Participants paying the standard Founder Commitment Contribution may request refunds as follows:
 
 (a) one hundred percent (100%) refund up to four (4) weeks prior to the scheduled Program commencement date; and
@@ -753,7 +753,7 @@ Once the Venture Readiness Clinic has commenced, no refunds shall be issued, inc
 
 6.5 Administrative Discretion
 
-=== Page 70 ===
+
 InvestoVilla reserves the right, but not the obligation, to approve exceptional refund requests on compassionate or extraordinary grounds.
 
 Any such approval shall not create precedent.
@@ -786,7 +786,7 @@ Participants are expected to:
 
 (f) apply feedback in good faith; and
 
-=== Page 71 ===
+
 (g) uphold the reputation and integrity of the Program.
 
 
@@ -819,7 +819,7 @@ A Founder may be deemed non-performing where the Founder persistently fails to:
 
 (c) maintain reasonable engagement levels; or
 
-=== Page 72 ===
+
 (d) satisfy minimum Program expectations.
 
 InvestoVilla may take corrective action including warnings, coaching interventions, suspension, or removal.
@@ -852,7 +852,7 @@ The IVBA™ may assess factors including:
 
 (b) Product quality and differentiation;
 
-=== Page 73 ===
+
 (c) Market opportunity and customer understanding;
 
 (d) Traction and validation indicators;
@@ -885,7 +885,7 @@ Assessment outcomes may include:
 
 8.4 Venture Readiness Classifications
 
-=== Page 74 ===
+
 Classifications may include:
 
 (a) Emerging;
@@ -916,7 +916,7 @@ Neither the IVBA™ nor the IVBR™ constitutes:
 
 (e) a representation regarding commercial viability.
 
-=== Page 75 ===
+
 8.6 Dynamic Nature of Assessments
 
 The Founder acknowledges that IVBR™ outcomes may evolve over time.
@@ -949,7 +949,7 @@ The Founder remains solely responsible for all business decisions and fundraisin
 
 9.1 Confidential Information
 
-=== Page 76 ===
+
 Each party agrees to protect the Confidential Information of the other party disclosed in connection with participation in the Program.
 
 For the purposes of this Agreement, Confidential Information means non-public information that is proprietary, commercially sensitive, strategic,
@@ -982,7 +982,7 @@ Confidential Information shall not include information that:
 
 (ii) was lawfully known to the receiving party prior to disclosure;
 
-=== Page 77 ===
+
 (iii) is independently developed without use of the disclosed Confidential Information; or
 
 (iv) is lawfully obtained from a third party without restriction.
@@ -1015,7 +1015,7 @@ Such use may include, without limitation:
 (b) referencing non-confidential milestones achieved during or following participation, including fundraising outcomes voluntarily disclosed by the
 Founder;
 
-=== Page 78 ===
+
 (c) publishing aggregate Program statistics and success indicators;
 
 (d) featuring case studies, testimonials, quotes, or founder stories voluntarily provided by the Founder;
@@ -1048,7 +1048,7 @@ including by:
 
 (d) acknowledging Program participation in media engagements; and
 
-=== Page 79 ===
+
 (e) identifying the Startup as an InvestoVilla Program participant or alumnus, where applicable.
 
 In exercising these rights, the Founder shall not:
@@ -1081,7 +1081,7 @@ except:
 The receiving party shall take reasonable steps to ensure that persons receiving Confidential Information through it comply with the confidentiality
 obligations contained herein.
 
-=== Page 80 ===
+
 9.6 Founder Responsibility
 
 The Founder acknowledges that participation in mentoring sessions, workshops, peer-learning environments, hackathons, investor events, and similar
@@ -1111,7 +1111,7 @@ However, the Founder acknowledges and agrees that:
 (d) InvestoVilla shall not be responsible for disclosures made independently by the Founder or for actions taken by investors based upon such
 disclosures.
 
-=== Page 81 ===
+
 9.8 Survival
 
 Confidentiality obligations relating to trade secrets and information constituting proprietary know-how shall survive indefinitely.
@@ -1139,7 +1139,7 @@ addition to any remedies otherwise available under applicable law.
 The parties acknowledge that the Program is designed to foster learning, collaboration, ecosystem building, and the celebration of entrepreneurial
 progress.
 
-=== Page 82 ===
+
 Accordingly, this Section shall be interpreted in a manner that protects genuinely sensitive and confidential information while permitting the ethical
 sharing of non-confidential participation experiences, lessons learned, success stories, and Program impact narratives that contribute to the
 advancement of entrepreneurship and venture development across Africa.
@@ -1171,7 +1171,7 @@ Without limitation, the Founder shall retain ownership of:
 
 (h) software code, applications, digital products, databases, and technical documentation developed by the Startup;
 
-=== Page 83 ===
+
 (i) research findings, proprietary information, and trade secrets owned by the Founder or Startup; and
 
 (j) any other intellectual property rights belonging to the Founder or Startup under applicable law.
@@ -1204,7 +1204,7 @@ reproduce internally, analyse, and use Founder-provided materials solely for pur
 
 (f) facilitating Program-related activities expressly authorised by the Founder.
 
-=== Page 84 ===
+
 Except as expressly permitted under this Agreement, InvestoVilla shall not commercially exploit the Founder's intellectual property without separate
 written consent.
 
@@ -1237,7 +1237,7 @@ The Founder acknowledges that it remains his or her responsibility to seek appro
 
 11. INVESTOVILLA INTELLECTUAL PROPERTY
 
-=== Page 85 ===
+
 11.1 Ownership of InvestoVilla Intellectual Property
 
 All rights, title, and interest in and to InvestoVilla Intellectual Property shall remain exclusively vested in InvestoVilla.
@@ -1270,7 +1270,7 @@ For purposes of this Agreement, InvestoVilla Intellectual Property includes, wit
 
 (j) templates, models, forms, and reporting structures;
 
-=== Page 86 ===
+
 (k) educational content, Program Materials, presentations, handbooks, and facilitator guides;
 
 (l) proprietary databases, datasets, benchmarking frameworks, and analytical tools developed by InvestoVilla; and
@@ -1302,7 +1302,7 @@ The IVBA™ methodology includes, without limitation:
 
 (h) related documentation and know-how.
 
-=== Page 87 ===
+
 The Founder shall acquire no ownership rights whatsoever in the IVBA™ methodology.
 
 
@@ -1335,7 +1335,7 @@ Such purposes may include:
 
 (f) other applicable lawful business uses connected to the Startup.
 
-=== Page 88 ===
+
 This licence does not include the right to reproduce, commercialise, sublicense, modify, reverse engineer, adapt, or create derivative versions of the
 IVBA™ or IVBR™ frameworks themselves.
 
@@ -1368,7 +1368,7 @@ information for purposes connected with the administration and delivery of the P
 
 12.2 Categories of Information
 
-=== Page 89 ===
+
 Information processed may include:
 
 (a) identity information;
@@ -1401,7 +1401,7 @@ InvestoVilla shall process information solely for purposes including:
 
 (c) mentoring and educational support;
 
-=== Page 90 ===
+
 (d) investor readiness activities;
 
 (e) monitoring and evaluation;
@@ -1434,7 +1434,7 @@ Accordingly, data may be transferred internationally where reasonably necessary 
 
 The Founder shall ensure that information provided remains accurate and up to date and shall promptly notify InvestoVilla of material changes.
 
-=== Page 91 ===
+
 12.7 Retention
 
 InvestoVilla may retain Program records for reasonable periods necessary for legal compliance, reporting obligations, operational purposes, historical
@@ -1464,7 +1464,7 @@ Recordings may be used solely for legitimate Program purposes including:
 
 (d) facilitator development;
 
-=== Page 92 ===
+
 (e) internal training purposes; and
 
 (f) maintaining Program records.
@@ -1497,7 +1497,7 @@ InvestoVilla does not guarantee that the Founder will:
 
 (c) obtain debt financing;
 
-=== Page 93 ===
+
 (d) receive investor introductions; or
 
 (e) achieve any particular fundraising outcome.
@@ -1530,7 +1530,7 @@ Nothing in the Program constitutes:
 
 (a) investment advice;
 
-=== Page 94 ===
+
 (b) legal advice;
 
 (c) accounting advice;
@@ -1563,7 +1563,7 @@ The Founder shall remain solely responsible for:
 
 (c) negotiations;
 
-=== Page 95 ===
+
 (d) representations made to investors;
 
 (e) execution of transaction documents; and
@@ -1596,7 +1596,7 @@ Participation in the Program may expose Founders to additional ecosystem opportu
 
 15.2 No Entitlement
 
-=== Page 96 ===
+
 Participation in IPDPE shall not create any entitlement to participate in ecosystem opportunities.
 
 Access shall remain subject to eligibility requirements and InvestoVilla's discretion.
@@ -1628,7 +1628,7 @@ consultants, assessors, and Program personnel.
 
 16.2 Restriction Period
 
-=== Page 97 ===
+
 During participation in the Program and for a period of twelve (12) months following completion or termination of participation, the Founder shall
 not, without InvestoVilla's prior written consent:
 
@@ -1660,7 +1660,7 @@ Nothing in this Section shall prohibit:
 The parties acknowledge that the restrictions contained in this Section are reasonable and necessary to protect InvestoVilla's legitimate business
 interests and the sustainability of the Program ecosystem.
 
-=== Page 98 ===
+
 16.5 Remedies
 
 The Founder acknowledges that breaches of this Section may cause harm not readily compensable by monetary damages alone.
@@ -1691,7 +1691,7 @@ Participants shall:
 
 (c) provide accurate and complete information throughout the Program;
 
-=== Page 99 ===
+
 (d) comply with applicable laws and regulations;
 
 (e) uphold high ethical standards in dealings with investors, mentors, peers, and stakeholders;
@@ -1724,7 +1724,7 @@ The following conduct is strictly prohibited:
 
 (h) conduct that exposes InvestoVilla or other participants to legal, reputational, or operational risks; and
 
-=== Page 100 ===
+
 (i) any unlawful conduct.
 
 
@@ -1756,7 +1756,7 @@ InvestoVilla may suspend a Founder's participation, temporarily or indefinitely,
 
 (f) violated this Agreement;
 
-=== Page 101 ===
+
 (g) engaged in conduct capable of causing reputational harm to InvestoVilla, the Program, or participants; or
 
 (h) otherwise jeopardised the integrity, safety, quality, or objectives of the Program.
@@ -1789,7 +1789,7 @@ For purposes of this Agreement, non-performance may include persistent failure t
 
 (a) attend mandatory sessions;
 
-=== Page 102 ===
+
 (b) complete required deliverables;
 
 (c) participate meaningfully in Program activities;
@@ -1822,7 +1822,7 @@ Upon suspension or termination:
 
 (e) intellectual property provisions shall survive; and
 
-=== Page 103 ===
+
 (f) other provisions intended by their nature to survive termination shall remain effective.
 
 
@@ -1855,7 +1855,7 @@ To the fullest extent permitted by applicable law, InvestoVilla shall not be lia
 
 (c) special damages;
 
-=== Page 104 ===
+
 (d) incidental damages;
 
 (e) punitive damages;
@@ -1888,7 +1888,7 @@ actually paid by the Founder to InvestoVilla under this Agreement.
 
 19.4 Third-Party Actions
 
-=== Page 105 ===
+
 InvestoVilla shall not be liable for the actions, omissions, decisions, conduct, or representations of:
 
 (a) investors;
@@ -1921,7 +1921,7 @@ damages, costs, and expenses (including reasonable legal fees) arising from or r
 
 (a) the Founder's breach of this Agreement;
 
-=== Page 106 ===
+
 (b) material misrepresentations made by the Founder;
 
 (c) the Founder's unlawful conduct;
@@ -1953,7 +1953,7 @@ reasonable control, including:
 
 (b) epidemics and pandemics;
 
-=== Page 107 ===
+
 (c) natural disasters;
 
 (d) fire;
@@ -1986,7 +1986,7 @@ Where Force Majeure circumstances arise, InvestoVilla may:
 
 (b) modify Program schedules;
 
-=== Page 108 ===
+
 (c) transition delivery formats;
 
 (d) substitute reasonable alternatives; or
@@ -2018,7 +2018,7 @@ Nigerian law.
 
 23. MEDIATION AND ARBITRATION
 
-=== Page 109 ===
+
 23.1 Good Faith Resolution
 
 The parties shall endeavour to resolve disputes amicably through good faith discussions before initiating formal dispute resolution procedures.
@@ -2049,7 +2049,7 @@ The arbitration shall:
 
 (b) have its seat in Lagos State, Nigeria;
 
-=== Page 110 ===
+
 (c) be conducted by a sole arbitrator appointed by mutual agreement or, failing agreement, appointed in accordance with the applicable arbitration
 rules;
 
@@ -2082,7 +2082,7 @@ The Founder acknowledges and agrees that acceptance of this Agreement through el
 
 24.2 Valid Electronic Signature
 
-=== Page 111 ===
+
 The following actions shall collectively or individually constitute valid evidence of acceptance:
 
 (a) checking an electronic acceptance box;
@@ -2113,7 +2113,7 @@ Electronic records maintained by InvestoVilla regarding acceptance of this Agree
 
 25.1 Entire Agreement
 
-=== Page 112 ===
+
 This Agreement constitutes the entire agreement between the parties regarding participation in IPDPE and supersedes prior discussions,
 understandings, representations, or agreements relating thereto.
 
@@ -2145,7 +2145,7 @@ fiduciary relationship, or other similar arrangement between the parties.
 
 Founders shall remain solely responsible for all strategic, operational, legal, financial, and fundraising decisions relating to their Startups.
 
-=== Page 113 ===
+
 25.6 Notices
 
 Notices under this Agreement may be delivered electronically using contact details provided by the Founder during application or onboarding.
@@ -2175,7 +2175,6 @@ Headings are included for convenience only and shall not affect interpretation.
 
 25.10 Language
 
-=== Page 114 ===
 This Agreement is executed in the English language, which shall govern its interpretation and application.
 
 
