@@ -994,7 +994,7 @@ export default function Home() {
                 <Icon.Clock className="h-5 w-5" />
               </span>
               <p className="text-sm leading-relaxed text-ink-soft">
-                <span className="font-semibold text-forest-800">Introductory deadline · july 5, 2026.</span> Early
+                <span className="font-semibold text-forest-800">Introductory deadline · July 5, 2026.</span> Early
                 applicants can request a need-based reduction — offered first-come, first-served, and closing
                 automatically once half the seats are filled.
               </p>

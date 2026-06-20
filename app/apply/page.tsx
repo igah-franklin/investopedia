@@ -284,11 +284,11 @@ export default function ApplyPage() {
               <div className="rounded-none border border-gold/30 bg-gold-soft/25 px-5 py-4 text-sm text-ink-soft">
                 {price.requiresPayment ? (
                   <>
-                    Venture Backability Clinic fee:{" "}
+                    Founder Commitment Contribution fee:{" "}
                     <span className="font-display text-lg font-semibold text-forest-800">
                       USD {price.amount}
                     </span>{" "}
-                    — payable only after you&apos;re approved. The 12-week accelerator is free.
+                    — payable only after you&apos;re approved.
                   </>
                 ) : (
                   <>The Venture Backability Clinic fee is <span className="font-semibold text-forest-800">waived</span> for venture-backed founders. The accelerator is free.</>

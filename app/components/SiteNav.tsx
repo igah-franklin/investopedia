@@ -39,70 +39,71 @@ export default function SiteNav() {
   return (
     <>
       <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled
-        ? "border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl py-3 shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]"
-        : "py-5"
-        }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="InvestoVilla home">
-          <img
-            src="/investovilla-logo.png"
-            alt="InvestoVilla Logo"
-            className="h-9 w-auto object-contain"
-          />
-        </a>
+        // className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled
+        //   ? "border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl py-3 shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]"
+        //   : "py-5"
+        //   }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 py-5 border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl py-3 shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]`}
+      >
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
+          <a href="#top" className="group flex items-center gap-2.5" aria-label="InvestoVilla home">
+            <img
+              src="/investovilla-logo.png"
+              alt="InvestoVilla Logo"
+              className="h-9 w-auto object-contain"
+            />
+          </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {LINKS.map((l) => (
+          <div className="hidden items-center gap-1 lg:flex">
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="relative rounded-none px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-forest-700"
+              >
+                <span className="relative z-10">{l.label}</span>
+                <span className="absolute inset-0 scale-90 rounded-none bg-emerald/0 opacity-0 transition-all duration-300 hover:bg-emerald/8 hover:opacity-100" />
+              </a>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
             <a
-              key={l.href}
-              href={l.href}
-              className="relative rounded-none px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-forest-700"
+              href="/login"
+              className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
             >
-              <span className="relative z-10">{l.label}</span>
-              <span className="absolute inset-0 scale-90 rounded-none bg-emerald/0 opacity-0 transition-all duration-300 hover:bg-emerald/8 hover:opacity-100" />
+              Log in
             </a>
-          ))}
-        </div>
+            <a
+              href="/apply"
+              className="btn-sheen hidden rounded-none bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream shadow-lg shadow-forest-900/20 transition-all duration-300 hover:bg-forest-700 hover:shadow-forest-900/30 sm:inline-flex"
+            >
+              Apply now
+            </a>
 
-        <div className="flex items-center gap-3">
-          <a
-            href="/login"
-            className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
-          >
-            Log in
-          </a>
-          <a
-            href="/apply"
-            className="btn-sheen hidden rounded-none bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream shadow-lg shadow-forest-900/20 transition-all duration-300 hover:bg-forest-700 hover:shadow-forest-900/30 sm:inline-flex"
-          >
-            Apply now
-          </a>
-
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-none border border-forest-900/12 bg-white/60 lg:hidden"
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            <div className="flex flex-col gap-[5px]">
-              <span
-                className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""
-                  }`}
-              />
-              <span
-                className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "opacity-0" : ""
-                  }`}
-              />
-              <span
-                className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""
-                  }`}
-              />
-            </div>
-          </button>
-        </div>
-      </nav>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-none border border-forest-900/12 bg-white/60 lg:hidden"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              <div className="flex flex-col gap-[5px]">
+                <span
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""
+                    }`}
+                />
+                <span
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "opacity-0" : ""
+                    }`}
+                />
+                <span
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""
+                    }`}
+                />
+              </div>
+            </button>
+          </div>
+        </nav>
       </header>
 
       {/* Mobile drawer — slides in from the right (rendered outside the
