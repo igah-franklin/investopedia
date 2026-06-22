@@ -659,7 +659,7 @@ export default function Home() {
                     Phase 1
                   </span>
                   <span className="rounded-none bg-forest-900/5 px-3 py-1 text-xs font-medium text-muted">
-                    2 or 4 weeks · optional for venture-backed participants
+                    2 or 4 weeks · optional for already venture-backed founders
                   </span>
                 </div>
                 <h3 className="relative mt-5 font-display text-2xl font-semibold text-ink sm:text-3xl">
@@ -1342,7 +1342,7 @@ export default function Home() {
                 className="h-9 w-auto object-contain"
               />
               <div className="flex flex-col leading-none">
-                <span className="font-display text-[1.05rem] font-semibold text-cream">investovilla</span>
+                <span className="font-display text-[1.05rem] font-semibold text-cream">InvestoVilla</span>
                 <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-emerald">
                   Pipeline Program
                 </span>
@@ -1361,7 +1361,7 @@ export default function Home() {
             </nav>
           </div>
           <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs sm:flex-row">
-            <p>© 2026 Pipeline Development Program. An AmSteveHouse initiative.</p>
+            <p>© 2026 Pipeline Development Program. An AM-Steve House initiative.</p>
             <a href="https://pipeline.amstevehouse.com" className="font-medium text-mint transition-colors hover:text-emerald-bright">
               pipeline.amstevehouse.com
             </a>
