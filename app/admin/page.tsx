@@ -16,7 +16,7 @@ function ReviewRow({ app, onReviewed }: { app: Application; onReviewed: () => vo
   const [busy, setBusy] = useState<"approved" | "rejected" | null>(null);
   const [error, setError] = useState("");
 
-  const founder = typeof app.user === "object" ? app.user.email : app.email;
+  const founder = (app.user && typeof app.user === "object") ? app.user.email : app.email;
 
   async function decide(decision: "approved" | "rejected") {
     if (decision === "rejected" && !reason.trim()) {
