@@ -192,10 +192,10 @@ export default function Home() {
 
               <Reveal delay={80}>
                 <h1 className="mt-7 font-display text-[2.7rem] font-semibold leading-[1.03] tracking-tight sm:text-6xl lg:text-[4.5rem]">
-                  <span className="text-gild">Raise capital </span>
-                  <br className="hidden sm:block" /> in Africa.
+                  <span className="text-gild">Raise smarter.</span>
+                  <br className="hidden sm:block" /> Close faster.
                   <br />
-                  On your terms.
+                  Build for Africa.
                 </h1>
               </Reveal>
 
@@ -232,7 +232,7 @@ export default function Home() {
                     The Accelerator is <span className="font-semibold text-mint">100% free</span>
                   </span>
                   <span aria-hidden className="hidden h-1 w-1 rounded-full bg-cream/30 sm:block" />
-                  <span>only the optional Venture Backability Clinic carries a subsidized fee</span>
+                  <span>only the optional Venture Backability Assessment during the Clinic carries a subsidized fee</span>
                 </div>
               </Reveal>
             </div>
@@ -659,7 +659,7 @@ export default function Home() {
                     Phase 1
                   </span>
                   <span className="rounded-none bg-forest-900/5 px-3 py-1 text-xs font-medium text-muted">
-                    2 or 4 weeks · paid &amp; optional
+                    2 or 4 weeks · optional for venture-backed participants
                   </span>
                 </div>
                 <h3 className="relative mt-5 font-display text-2xl font-semibold text-ink sm:text-3xl">
@@ -673,7 +673,7 @@ export default function Home() {
                   {[
                     "Business modelling & design",
                     "Product-market fit",
-                    "Venture backability assessment",
+                    "Venture Backability Assessment (paid but subsidized for pilot participants)",
                     "Pattern recognition (Froebelian learning)",
                     "Group facilitation & executive peer board",
                     "One-on-one consulting",
