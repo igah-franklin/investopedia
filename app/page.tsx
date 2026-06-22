@@ -232,7 +232,7 @@ export default function Home() {
                     The Accelerator is <span className="font-semibold text-mint">100% free</span>
                   </span>
                   <span aria-hidden className="hidden h-1 w-1 rounded-full bg-cream/30 sm:block" />
-                  <span>only the optional Venture Backability Clinic carries a subsidized fee</span>
+                  <span>only the optional Venture Backability Assessment during the Clinic carries a subsidized fee</span>
                 </div>
               </Reveal>
             </div>
