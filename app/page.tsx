@@ -213,7 +213,7 @@ export default function Home() {
                     href="#apply"
                     className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
                   >
-                    Apply before July 5 (Introductory Deadline)
+                    Apply before July 30 (Introductory Deadline)
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   <button
@@ -822,27 +822,27 @@ export default function Home() {
           <div className="mt-14 border-t border-forest-900/12">
             {[
               {
-                when: "Aug 15, 2026",
+                when: "August 31, 2026",
                 title: "Cohort begins",
                 desc: "Venture Backability Clinic opens for accepted founders.",
               },
               {
-                when: "Weeks 1–4",
-                title: "Venture Backability Clinic",
+                when: "Aug 31 – Sept 27, 2026",
+                title: "Venture Backability Clinic (W 1–4)",
                 desc: "Sharpen the model. Submit first funding requests.",
               },
               {
-                when: "+ 2 weeks",
+                when: "Sept 28 – Oct 10, 2026",
                 title: "Break",
                 desc: "Synthesis. Investor feedback. Prep for the accelerator.",
               },
               {
-                when: "Weeks 7–18",
-                title: "Fundraising accelerator",
+                when: "Oct 11, 2026 – Jan 3, 2027",
+                title: "Fundraising accelerator (W 7–12)",
                 desc: "12 weeks of live raising under expert guidance.",
               },
               {
-                when: "Dec 19, 2026",
+                when: "Jan 4, 2027",
                 title: "Cohort closes",
                 desc: "Capstone, mentor reviews, investor introductions.",
               },
@@ -994,7 +994,7 @@ export default function Home() {
                 <Icon.Clock className="h-5 w-5" />
               </span>
               <p className="text-sm leading-relaxed text-ink-soft">
-                <span className="font-semibold text-forest-800">Introductory deadline · July 5, 2026.</span> Early
+                <span className="font-semibold text-forest-800">Introductory deadline · July 30, 2026 · Final deadline · August 30, 2026.</span> Early
                 applicants can request a need-based reduction — offered first-come, first-served, and closing
                 automatically once half the seats are filled.
               </p>

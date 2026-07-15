@@ -22,7 +22,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "What are the current program dates?",
-        a: "The current proposed schedule runs from August 15, 2026 through December 19, 2026. Dates may be adjusted based on operational considerations and participant needs.",
+        a: "The current proposed schedule runs from August 31, 2026 through January 4, 2027. Dates may be adjusted based on operational considerations and participant needs.",
       },
       {
         q: "Is the program only for startups already raising capital?",
@@ -55,7 +55,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is financial support available?",
-        a: "Yes. Founders who apply and onboard well ahead of july 5, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
+        a: "Yes. Founders who apply and onboard well ahead of July 30, 2026 may request need-based fee reduction support. Approved applicants may participate for as little as $119. This is only available on a first-come, first-served basis until all the available slots are filled.",
       },
       {
         q: "Why is there a fee for the Venture Readiness Clinic?",
@@ -63,7 +63,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is need-based support guaranteed?",
-        a: "No. Support is limited and awarded on a rolling basis. Availability may close before july 5 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of july 5, 2026.",
+        a: "No. Support is limited and awarded on a rolling basis. Availability may close before July 30 once allocated slots are filled. Applicants wishing to apply for a fee reduction are advised to apply well ahead of the introductory deadline of July 30, 2026.",
       },
     ],
   },
