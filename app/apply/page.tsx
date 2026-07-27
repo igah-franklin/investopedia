@@ -205,6 +205,25 @@ export default function ApplyPage() {
           optional Venture Backability Clinic carries a subsidized fee.
         </p>
 
+        <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-none border border-gold/30 bg-gold-soft/20 p-4 sm:p-5">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-forest-800">
+              Have questions before applying?
+            </p>
+            <p className="mt-1 text-sm text-ink-soft">
+              Join one of our free 30–45-minute Ask Me Anything (AMA) sessions or request a private 15-minute 1-on-1 consultation.
+            </p>
+          </div>
+          <a
+            href="https://bit.ly/4wqSoJV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-none bg-forest-800 px-4 py-2.5 text-xs font-semibold text-cream hover:bg-forest-700 transition-colors"
+          >
+            Register for AMA
+          </a>
+        </div>
+
         {error && (
           <div className="mt-6">
             <Alert kind="error">{error}</Alert>
