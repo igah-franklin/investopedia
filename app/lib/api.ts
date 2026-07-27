@@ -50,6 +50,7 @@ export interface Application {
   founderSocialLinks?: string;
   coFounderSocialLinks?: string;
   commitmentReason?: string;
+  howDidYouHear?: string;
   businessPlanUrl?: string;
   needBasedReason?: string;
   status: ApplicationStatus;

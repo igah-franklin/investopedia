@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ClientProviders } from "./components/ClientProviders";
+import ScrollToTop from "./components/ScrollToTop";
 
 const display = Fraunces({
   variable: "--font-display",
@@ -57,7 +58,10 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-cream text-ink">
-        <ClientProviders>{children}</ClientProviders>
+        <ClientProviders>
+          {children}
+          <ScrollToTop />
+        </ClientProviders>
       </body>
     </html>
   );
