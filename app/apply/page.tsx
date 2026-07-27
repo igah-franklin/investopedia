@@ -49,6 +49,20 @@ const AMOUNT_OPTIONS = [
   "Above $1M"
 ];
 
+const HOW_HEARD_OPTIONS = [
+  "LinkedIn",
+  "Google Search",
+  "Twitter / X",
+  "Facebook",
+  "Instagram",
+  "YouTube",
+  "WhatsApp / Telegram Group",
+  "Referral / Friend or Colleague",
+  "Partner Organization / Incubator / Hub",
+  "Email Newsletter / News Article",
+  "Other"
+];
+
 type FormShape = {
   founderName: string;
   email: string;
@@ -75,6 +89,8 @@ type FormShape = {
   videoUrl: string;
   founderSocialLinks: string;
   commitmentReason: string;
+  howDidYouHearSource: string;
+  howDidYouHearDetails: string;
   needBasedReason: string;
   agreeToTerms: boolean;
 };
@@ -105,6 +121,8 @@ const initial: FormShape = {
   videoUrl: "",
   founderSocialLinks: "",
   commitmentReason: "",
+  howDidYouHearSource: "",
+  howDidYouHearDetails: "",
   needBasedReason: "",
   agreeToTerms: false,
 };
@@ -155,11 +173,24 @@ export default function ApplyPage() {
       return;
     }
 
+    if (!form.howDidYouHearSource) {
+      setError("Please select how you heard about this program.");
+      setFieldErrors({ howDidYouHearSource: "Selection required" });
+      setSubmitting(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     try {
       const recaptchaToken = await executeRecaptcha("submit_application");
-      const { raiseAmountUsdSelect, raiseAmountUsdCustom, ...formToSubmit } = form;
+      const { raiseAmountUsdSelect, raiseAmountUsdCustom, howDidYouHearSource, howDidYouHearDetails, ...formToSubmit } = form;
+      const combinedHowDidYouHear = form.howDidYouHearDetails.trim()
+        ? `${form.howDidYouHearSource} — ${form.howDidYouHearDetails.trim()}`
+        : form.howDidYouHearSource;
+
       const payload = {
         ...formToSubmit,
+        howDidYouHear: combinedHowDidYouHear,
         agreeToTerms: form.agreeToTerms === true,
         recaptchaToken,
       };
@@ -460,6 +491,43 @@ export default function ApplyPage() {
                 required
               />
             </Field>
+          </section>
+
+          {/* Discovery */}
+          <section className="space-y-5 rounded-none border border-forest-900/10 bg-white/60 p-6 sm:p-8">
+            <h2 className="font-display text-xl font-semibold text-ink">Discovery</h2>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field
+                label="How did you hear about this program?"
+                required
+                error={fieldErrors.howDidYouHearSource || fieldErrors.howDidYouHear}
+              >
+                <Select
+                  value={form.howDidYouHearSource || ""}
+                  onChange={(e) => set("howDidYouHearSource", e.target.value)}
+                  required
+                >
+                  <option value="">Select platform / source</option>
+                  {HOW_HEARD_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </Select>
+              </Field>
+
+              <Field
+                label="Specific details, handle, or reference link"
+                hint="Please include organization name, account handle, individual, or link if applicable"
+                error={fieldErrors.howDidYouHearDetails}
+              >
+                <Input
+                  value={form.howDidYouHearDetails as string}
+                  onChange={(e) => set("howDidYouHearDetails", e.target.value)}
+                  placeholder="e.g. Specific post, page, person name, or link"
+                />
+              </Field>
+            </div>
           </section>
 
           <label className="flex items-start gap-3">

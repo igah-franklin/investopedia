@@ -148,6 +148,11 @@ function ReviewRow({ app, onReviewed }: { app: Application; onReviewed: () => vo
             <span className="text-muted">Commitment Reason:</span> {app.commitmentReason}
           </p>
         )}
+        {app.howDidYouHear && (
+          <p className="sm:col-span-2">
+            <span className="text-muted">How did they hear:</span> {app.howDidYouHear}
+          </p>
+        )}
         {app.review?.reason && (
           <p className="sm:col-span-2"><span className="text-muted">Decision note:</span> {app.review.reason}</p>
         )}
