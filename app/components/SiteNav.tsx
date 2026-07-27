@@ -7,6 +7,7 @@ const LINKS = [
   { href: "#who", label: "Who it's for" },
   { href: "#structure", label: "Structure" },
   { href: "#pricing", label: "Cost" },
+  { href: "#ama", label: "AMA Session" },
   { href: "#apply", label: "Apply" },
   { href: "#faq", label: "FAQ" },
 ];

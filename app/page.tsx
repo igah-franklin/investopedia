@@ -125,6 +125,21 @@ const Icon = {
       <path d="M18 6 6 18M6 6l12 12" />
     </svg>
   ),
+  External: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  ),
+  QrCode: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
+      <rect x="3" y="3" width="7" height="7" rx="1" />
+      <rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <path d="M14 14h3v3h-3zM17 17h4v4h-4zM14 20h3v1h-3zM20 14h1v3h-1z" />
+    </svg>
+  ),
 };
 
 /* ── reusable bits ─────────────────────────────────────────────── */
@@ -1152,6 +1167,103 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════ AMA INVITATION ════════════════ */}
+      <section id="ama" className="relative scroll-mt-24 overflow-hidden bg-forest-900 py-24 text-cream sm:py-32">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -right-24 top-0 h-[28rem] w-[28rem] rounded-full bg-emerald/20 blur-[120px] animate-aurora" />
+          <div className="absolute left-[-10rem] bottom-10 h-[24rem] w-[24rem] rounded-full bg-gold/15 blur-[120px] animate-aurora [animation-delay:-7s]" />
+        </div>
+        <div aria-hidden className="absolute inset-0 bg-grid-light opacity-40" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* left column text */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <span className="inline-flex items-center gap-2 rounded-none border border-gold/30 bg-gold-soft/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-bright backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold-bright animate-pulse" />
+                  Invitation to the AMA
+                </span>
+                <h2 className="mt-6 font-display text-3xl font-semibold leading-tight tracking-tight text-cream sm:text-4xl lg:text-[2.75rem]">
+                  Not sure if IPDPE is the right fit for your venture?
+                </h2>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <p className="text-lg leading-relaxed text-cream/80">
+                  Join one of our free 30–45-minute Ask Me Anything (AMA) sessions to learn more about the program, understand how investors evaluate startups, and ask any questions before applying.
+                </p>
+              </Reveal>
+
+              <Reveal delay={140}>
+                <div className="rounded-none border-l-4 border-gold bg-white/5 p-6 backdrop-blur ring-1 ring-white/10">
+                  <div className="flex items-start gap-3.5">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-none bg-gold/20 text-gold-bright">
+                      <Icon.Users className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-base font-semibold text-cream">Need a Private Discussion?</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-cream/75">
+                        If your questions are better suited to a private discussion, you may request a 15-minute one-on-one consultation when registering for the AMA. We&apos;ll follow up by email with a scheduling link so you can book a convenient time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={200}>
+                <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <a
+                    href="https://bit.ly/4wqSoJV"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-sheen group inline-flex items-center gap-2.5 rounded-none bg-gold px-7 py-4 text-base font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
+                  >
+                    <span>Register for AMA Session</span>
+                    <Icon.External className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                  <span className="text-xs font-mono tracking-wide text-mint/70 break-all">
+                    https://bit.ly/4wqSoJV
+                  </span>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* right column QR code card */}
+            <Reveal delay={160} className="lg:col-span-5">
+              <div className="relative mx-auto max-w-sm lg:max-w-none">
+                <div aria-hidden className="absolute -inset-3 -z-10 rounded-none bg-gradient-to-br from-gold/25 via-emerald/20 to-transparent blur-2xl" />
+                <div className="group relative overflow-hidden rounded-none border border-gold/30 bg-forest-950/90 p-8 text-center shadow-2xl backdrop-blur-xl">
+                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-none bg-gold/15 text-gold-bright ring-1 ring-gold/30 mb-4">
+                    <Icon.QrCode className="h-5 w-5" />
+                  </div>
+
+                  <h3 className="font-display text-xl font-semibold text-cream">Scan to Register</h3>
+                  <p className="mt-1 text-xs text-cream/60">
+                    Use your mobile phone camera to scan the QR code and register directly for the upcoming AMA.
+                  </p>
+
+                  <div className="relative mx-auto mt-6 aspect-square w-56 overflow-hidden rounded-none border-2 border-gold/40 bg-white p-3 shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                    <Image
+                      src="/qrcode.jpeg"
+                      alt="AMA Session Registration QR Code - https://bit.ly/4wqSoJV"
+                      fill
+                      sizes="224px"
+                      className="object-contain"
+                    />
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-mint">
+                    <span className="h-2 w-2 rounded-full bg-emerald-bright animate-ping" />
+                    <span>Instant Registration via Mobile</span>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ════════════════ HOW TO APPLY ════════════════ */}
       <section id="apply" className="relative scroll-mt-24 overflow-hidden bg-forest-950 py-24 text-cream sm:py-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -1349,10 +1461,10 @@ export default function Home() {
               </div>
             </div>
             <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-              {["About", "Who it's for", "Structure", "Cost", "Apply", "FAQ"].map((l) => (
+              {["About", "Who it's for", "Structure", "Cost", "AMA Session", "Apply", "FAQ"].map((l) => (
                 <a
                   key={l}
-                  href={`#${l.toLowerCase().replace(/[^a-z]/g, "").replace("whoitsfor", "who").replace("cost", "pricing")}`}
+                  href={`#${l.toLowerCase().replace(/[^a-z]/g, "").replace("whoitsfor", "who").replace("cost", "pricing").replace("amasession", "ama")}`}
                   className="transition-colors hover:text-mint"
                 >
                   {l}
