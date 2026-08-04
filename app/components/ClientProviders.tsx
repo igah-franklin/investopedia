@@ -7,7 +7,7 @@ import { AuthProvider } from "../lib/auth";
 
 export function ClientProviders({ children }: { children: ReactNode }) {
   return (
-    <SessionProvider>
+    <SessionProvider refetchOnWindowFocus={false}>
       <GoogleReCaptchaProvider
         reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
         scriptProps={{ async: true, defer: true }}

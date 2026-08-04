@@ -228,7 +228,7 @@ export default function Home() {
                     href="#apply"
                     className="btn-sheen group inline-flex items-center gap-2 rounded-none bg-gold px-7 py-3.5 text-[0.95rem] font-semibold text-forest-950 shadow-xl shadow-gold/20 transition-all duration-300 hover:bg-gold-bright"
                   >
-                    Apply before July 30 (Introductory Deadline)
+                    Apply before August 30 (Introductory Deadline)
                     <Icon.Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   <button
@@ -1009,7 +1009,7 @@ export default function Home() {
                 <Icon.Clock className="h-5 w-5" />
               </span>
               <p className="text-sm leading-relaxed text-ink-soft">
-                <span className="font-semibold text-forest-800">Introductory deadline · July 30, 2026 · Final deadline · August 30, 2026.</span> Early
+                <span className="font-semibold text-forest-800">Introductory deadline · August 30, 2026 · Final deadline · August 30, 2026.</span> Early
                 applicants can request a need-based reduction — offered first-come, first-served, and closing
                 automatically once half the seats are filled.
               </p>
