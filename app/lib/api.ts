@@ -180,18 +180,58 @@ export const applications = {
 // ── admin ─────────────────────────────────────────────────────
 export const admin = {
   stats: () =>
-    request<{ stats: { pending: number; approved: number; rejected: number; verified: number } }>(
+    request<{ stats: { pending: number; approved: number; rejected: number; verified: number; usersCount: number } }>(
       "/api/admin/stats"
     ),
-  list: (params: { status?: string; page?: number } = {}) => {
+  list: (params: {
+    status?: string;
+    search?: string;
+    startDate?: string;
+    endDate?: string;
+    type?: string;
+    page?: number;
+    limit?: number;
+  } = {}) => {
     const q = new URLSearchParams();
-    if (params.status) q.set("status", params.status);
+    if (params.status && params.status !== "all") q.set("status", params.status);
+    if (params.search) q.set("search", params.search);
+    if (params.startDate) q.set("startDate", params.startDate);
+    if (params.endDate) q.set("endDate", params.endDate);
+    if (params.type && params.type !== "all") q.set("type", params.type);
     if (params.page) q.set("page", String(params.page));
+    if (params.limit) q.set("limit", String(params.limit));
     const qs = q.toString();
-    return request<{ applications: Application[]; total: number; page: number }>(
-      `/api/admin/applications${qs ? `?${qs}` : ""}`
-    );
+    return request<{
+      applications: Application[];
+      total: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    }>(`/api/admin/applications${qs ? `?${qs}` : ""}`);
   },
+  deleteApplication: (id: string) =>
+    request<{ status: string; message: string }>(`/api/admin/applications/${id}`, {
+      method: "DELETE",
+    }),
+  listUsers: (params: { search?: string; page?: number; limit?: number } = {}) => {
+    const q = new URLSearchParams();
+    if (params.search) q.set("search", params.search);
+    if (params.page) q.set("page", String(params.page));
+    if (params.limit) q.set("limit", String(params.limit));
+    const qs = q.toString();
+    return request<{
+      users: (User & { createdAt?: string; applicationsCount?: number })[];
+      total: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    }>(`/api/admin/users${qs ? `?${qs}` : ""}`);
+  },
+  deleteUser: (id: string) =>
+    request<{ status: string; message: string; deletedApplicationsCount: number }>(
+      `/api/admin/users/${id}`,
+      { method: "DELETE" }
+    ),
   review: (id: string, decision: "approved" | "rejected", reason: string) =>
     request<{ application: Application; payUrl?: string }>(`/api/admin/applications/${id}/review`, {
       method: "PATCH",

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useAuth } from "../lib/auth";
 
 const LINKS = [
   { href: "#about", label: "About" },
@@ -13,6 +15,7 @@ const LINKS = [
 ];
 
 export default function SiteNav() {
+  const { user, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -40,11 +43,7 @@ export default function SiteNav() {
   return (
     <>
       <header
-        // className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled
-        //   ? "border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl py-3 shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]"
-        //   : "py-5"
-        //   }`}
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 py-5 border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl py-3 shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]`}
+        className="fixed inset-x-0 top-0 z-50 transition-all duration-500 py-3 border-b border-forest-900/10 bg-cream-soft/85 backdrop-blur-xl shadow-[0_8px_30px_-18px_rgba(8,35,27,0.45)]"
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
           <a href="#top" className="group flex items-center gap-2.5" aria-label="InvestoVilla home">
@@ -69,12 +68,38 @@ export default function SiteNav() {
           </div>
 
           <div className="flex items-center gap-3">
-            <a
-              href="/login"
-              className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
-            >
-              Log in
-            </a>
+            {user ? (
+              <>
+                {user.role === "admin" && (
+                  <Link
+                    href="/admin"
+                    className="hidden text-sm font-semibold text-forest-800 transition-colors hover:text-emerald sm:inline-flex"
+                  >
+                    Admin
+                  </Link>
+                )}
+                <Link
+                  href="/dashboard"
+                  className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={logout}
+                  className="hidden rounded-none border border-forest-900/15 bg-white/70 px-4 py-2 text-sm font-semibold text-ink transition-all hover:bg-white sm:inline-flex"
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <a
+                href="/login"
+                className="hidden text-sm font-semibold text-ink transition-colors hover:text-forest-700 sm:inline-flex"
+              >
+                Log in
+              </a>
+            )}
+
             <a
               href="/apply"
               className="btn-sheen hidden rounded-none bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream shadow-lg shadow-forest-900/20 transition-all duration-300 hover:bg-forest-700 hover:shadow-forest-900/30 sm:inline-flex"
@@ -90,16 +115,19 @@ export default function SiteNav() {
             >
               <div className="flex flex-col gap-[5px]">
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""
-                    }`}
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${
+                    open ? "translate-y-[7px] rotate-45" : ""
+                  }`}
                 />
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "opacity-0" : ""
-                    }`}
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${
+                    open ? "opacity-0" : ""
+                  }`}
                 />
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""
-                    }`}
+                  className={`h-0.5 w-5 rounded-full bg-ink transition-all duration-300 ${
+                    open ? "-translate-y-[7px] -rotate-45" : ""
+                  }`}
                 />
               </div>
             </button>
@@ -107,18 +135,19 @@ export default function SiteNav() {
         </nav>
       </header>
 
-      {/* Mobile drawer — slides in from the right (rendered outside the
-          header so its background never inherits a nested backdrop-filter) */}
+      {/* Mobile drawer */}
       <div
         aria-hidden
         onClick={close}
-        className={`fixed inset-0 z-[60] bg-forest-950/50 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"
-          }`}
+        className={`fixed inset-0 z-[60] bg-forest-950/50 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
       />
       <aside
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-[70] flex w-[82%] max-w-sm flex-col border-l border-forest-900/10 bg-cream-soft shadow-[-20px_0_60px_-30px_rgba(8,35,27,0.55)] transition-transform duration-500 ease-out lg:hidden ${open ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed inset-y-0 right-0 z-[70] flex w-[82%] max-w-sm flex-col border-l border-forest-900/10 bg-cream-soft shadow-[-20px_0_60px_-30px_rgba(8,35,27,0.55)] transition-transform duration-500 ease-out lg:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="flex items-center justify-between border-b border-forest-900/8 px-5 py-4 sm:px-8">
           <span className="flex items-center gap-2.5">
@@ -153,6 +182,28 @@ export default function SiteNav() {
               {l.label}
             </a>
           ))}
+
+          {user && (
+            <>
+              {user.role === "admin" && (
+                <Link
+                  href="/admin"
+                  onClick={close}
+                  className="rounded-none px-4 py-3 text-base font-semibold text-forest-800 transition-colors hover:bg-emerald/8"
+                >
+                  Admin Portal
+                </Link>
+              )}
+              <Link
+                href="/dashboard"
+                onClick={close}
+                className="rounded-none px-4 py-3 text-base font-semibold text-forest-800 transition-colors hover:bg-emerald/8"
+              >
+                Dashboard
+              </Link>
+            </>
+          )}
+
           <a
             href="/apply"
             onClick={close}
@@ -160,13 +211,26 @@ export default function SiteNav() {
           >
             Apply now
           </a>
-          <a
-            href="/login"
-            onClick={close}
-            className="rounded-none border border-forest-900/15 px-4 py-3 text-center text-base font-semibold text-ink"
-          >
-            Log in
-          </a>
+
+          {user ? (
+            <button
+              onClick={() => {
+                close();
+                logout();
+              }}
+              className="rounded-none border border-forest-900/15 px-4 py-3 text-center text-base font-semibold text-red-600 hover:bg-red-50"
+            >
+              Log out
+            </button>
+          ) : (
+            <a
+              href="/login"
+              onClick={close}
+              className="rounded-none border border-forest-900/15 px-4 py-3 text-center text-base font-semibold text-ink"
+            >
+              Log in
+            </a>
+          )}
         </div>
       </aside>
     </>
