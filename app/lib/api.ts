@@ -237,6 +237,10 @@ export const admin = {
       method: "PATCH",
       body: JSON.stringify({ decision, reason }),
     }),
+  verify: (id: string) =>
+    request<{ application: Application }>(`/api/admin/applications/${id}/verify`, {
+      method: "PATCH",
+    }),
 };
 
 // ── payments ──────────────────────────────────────────────────
