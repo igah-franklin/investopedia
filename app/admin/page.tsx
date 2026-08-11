@@ -97,6 +97,7 @@ function ApplicationDetailModal({
 }) {
   const [reason, setReason] = useState("");
   const [busy, setBusy] = useState<"approved" | "rejected" | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
   const [error, setError] = useState("");
 
   const submittedDate = formatDate(app.createdAt);
@@ -118,6 +119,19 @@ function ApplicationDetailModal({
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Failed to submit decision.");
       setBusy(null);
+    }
+  }
+
+  async function verifyApp() {
+    setError("");
+    setIsVerifying(true);
+    try {
+      await admin.verify(app._id);
+      onReviewed();
+      onClose();
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to verify application.");
+      setIsVerifying(false);
     }
   }
 
@@ -291,7 +305,7 @@ function ApplicationDetailModal({
           {app.status !== "pending" && (
             <div className="rounded-none border border-forest-900/15 bg-cream-soft p-4 text-sm space-y-1">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-ink">Review Decision</span>
+                <span className="font-bold text-ink">Current Review Status</span>
                 <span className="text-xs text-muted">Decision on {reviewedDate.full}</span>
               </div>
               <p className="text-ink-soft font-medium">Status: <span className="capitalize font-semibold">{app.status}</span></p>
@@ -301,27 +315,45 @@ function ApplicationDetailModal({
             </div>
           )}
 
-          {/* Decision Form (for Pending apps) */}
-          {app.status === "pending" && (
-            <div className="border-t border-forest-900/15 pt-5 space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-forest-700">Review & Decide</h4>
-              <TextArea
-                value={reason}
-                onChange={(e) => setReason(e.target.value)}
-                placeholder="Reason / note sent to the applicant (required to reject)…"
-                rows={3}
-              />
-              {error && <Alert kind="error">{error}</Alert>}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="primary" loading={busy === "approved"} onClick={() => decide("approved")}>
-                  Approve Application
-                </Button>
-                <Button variant="danger" loading={busy === "rejected"} onClick={() => decide("rejected")}>
-                  Reject Application
-                </Button>
-              </div>
+          {/* Decision & Verification Actions Form */}
+          <div className="border-t border-forest-900/15 pt-5 space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-forest-700">Review & Admin Actions</h4>
+              {!app.verified && (
+                <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 border border-amber-200">
+                  Unverified Application
+                </span>
+              )}
             </div>
-          )}
+
+            <TextArea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Reason / note sent to the applicant (required to reject)…"
+              rows={2}
+            />
+            {error && <Alert kind="error">{error}</Alert>}
+
+            <div className="flex flex-wrap items-center gap-3">
+              <Button variant="primary" loading={busy === "approved"} onClick={() => decide("approved")}>
+                {app.status === "approved" ? "Re-Approve & Resend Offer Email" : "Approve Application"}
+              </Button>
+              <Button variant="danger" loading={busy === "rejected"} onClick={() => decide("rejected")}>
+                Reject Application
+              </Button>
+
+              {!app.verified && (
+                <Button
+                  variant="outline"
+                  loading={isVerifying}
+                  onClick={verifyApp}
+                  className="border-emerald text-emerald hover:bg-emerald/10 font-semibold"
+                >
+                  ✅ Mark as Verified
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Modal Footer with Actions */}
